@@ -303,6 +303,11 @@ When you have a real spectrum and want parameters + error bars:
   non-monotonic depth column, densities with a typo'd exponent.
 * Runs are isolated per directory — a crashed run never corrupts
   anything; fix the input and rerun.
+* **`pandorakit gui` says a port is busy**: a previous GUI is still
+  running. It now moves to the next free port automatically and tells
+  you which (`note: port 8765 was busy ... using 8766`). To reuse the
+  old one just open its address; to stop it: `pkill -f pandorakit.gui`;
+  to pick your own port: `pandorakit gui --port 9000`.
 * Ask the reference docs only when you want depth: MANUAL.md (how the
   engine thinks), INPUTS.md (the native input format, for reading the
   shipped templates), API.md (every function).

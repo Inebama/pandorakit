@@ -22,6 +22,7 @@ Everything happens in your filesystem: the GUI reads and writes the same
 
 from __future__ import annotations
 
+import errno
 import json
 import threading
 import traceback
@@ -338,11 +339,40 @@ class Handler(BaseHTTPRequestHandler):
             ))
 
 
-def serve(root=None, port=8765, open_browser=True):
+def serve(root=None, port=8765, open_browser=True, max_port_tries=20):
+    """Start the GUI, moving to the next free port if `port` is taken.
+
+    A previous GUI (or any other program) may already hold the port;
+    rather than failing, try the next few ports and say which one was
+    used. Pass max_port_tries=1 to insist on exactly `port`.
+    """
     root = Path(root or (Path.home() / "pandora")).expanduser()
     _STATE["root"] = root
     _STATE["install"] = PandoraInstall(root)
-    httpd = ThreadingHTTPServer(("127.0.0.1", port), Handler)
+
+    httpd = None
+    first = port
+    for candidate in range(first, first + max(1, max_port_tries)):
+        try:
+            httpd = ThreadingHTTPServer(("127.0.0.1", candidate), Handler)
+            port = candidate
+            break
+        except OSError as exc:
+            if exc.errno not in (errno.EADDRINUSE, errno.EACCES):
+                raise
+    if httpd is None:
+        raise SystemExit(
+            f"pandorakit GUI: ports {first}-{first + max_port_tries - 1} "
+            "are all in use.\n"
+            "  Another GUI is probably still running: open "
+            f"http://127.0.0.1:{first}/ to use it,\n"
+            "  stop it with  pkill -f pandorakit.gui  , "
+            "or choose another port with  --port NNNN"
+        )
+    if port != first:
+        print(f"note: port {first} was busy (another GUI running?), "
+              f"using {port} instead")
+
     url = f"http://127.0.0.1:{port}/"
     print(f"pandorakit GUI at {url}  (Ctrl-C to stop)")
     if open_browser:
@@ -351,6 +381,8 @@ def serve(root=None, port=8765, open_browser=True):
         httpd.serve_forever()
     except KeyboardInterrupt:
         print("\nbye")
+    finally:
+        httpd.server_close()
 
 
 # --------------------------------------------------------------------------

@@ -400,3 +400,40 @@ def test_depth_axes():
     assert all(lt[i] <= lt[i + 1] + 1e-9 for i in range(len(lt) - 1))
     # z in km matches model z in cm
     assert axes["z_km"]["values"][0] == pytest.approx(m.z[0] / 1e5)
+
+
+def test_gui_port_fallback():
+    """A busy port must not crash the GUI: it moves to the next one."""
+    import socket
+    import threading
+    import time
+
+    from pandorakit import gui
+
+    # occupy 8765-like port
+    squatter = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    squatter.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    squatter.bind(("127.0.0.1", 0))
+    busy = squatter.getsockname()[1]
+    squatter.listen(1)
+
+    started = {}
+
+    def fake_serve_forever(self):
+        started["port"] = self.server_address[1]
+        raise KeyboardInterrupt  # stop immediately
+
+    from http.server import ThreadingHTTPServer
+
+    orig = ThreadingHTTPServer.serve_forever
+    ThreadingHTTPServer.serve_forever = fake_serve_forever
+    try:
+        gui.serve(root=Path.home() / "pandora", port=busy,
+                  open_browser=False)
+    except SystemExit:
+        pytest.fail("serve() gave up instead of trying the next port")
+    finally:
+        ThreadingHTTPServer.serve_forever = orig
+        squatter.close()
+
+    assert started.get("port") == busy + 1
