@@ -278,3 +278,38 @@ def test_flux_profile_parsing():
     def at(x):
         return min(pts, key=lambda t: abs(t[0] - x))[1]
     assert at(0.5) == pytest.approx(at(-0.5), rel=0.02)
+
+
+# ---------------------------------------------------------------- fit math
+def test_fit_convolve_and_normalize():
+    np = pytest.importorskip("numpy")
+    from pandorakit.fit import convolve_R, normalize_to_wings
+
+    wl = np.linspace(-5, 5, 801)
+    f = 1.0 - 0.8 * np.exp(-0.5 * (wl / 0.05) ** 2)  # narrow line
+    fc = convolve_R(wl, f, R=30000.0, line_center=4000.0)
+    # LSF FWHM = 0.133 A >> line width: core fills in, area preserved
+    assert fc.min() > f.min() + 0.2
+    assert abs((1 - fc).sum() - (1 - f).sum()) / (1 - f).sum() < 0.05
+
+    g = normalize_to_wings(wl, 2.5 * f, wing=(4.0, 5.0))
+    assert g[np.abs(wl) > 4].mean() == pytest.approx(1.0, abs=0.01)
+
+
+def test_fit_nelder_mead_and_intervals():
+    np = pytest.importorskip("numpy")
+    from pandorakit.fit import _interval_from_profile, _nelder_mead
+
+    # quadratic bowl with minimum at (3, -2)
+    f = lambda x: (x[0] - 3.0) ** 2 + 2.0 * (x[1] + 2.0) ** 2
+    xb, fb = _nelder_mead(f, np.array([0.0, 0.0]), np.array([1.0, 1.0]),
+                          maxiter=200, ftol=1e-8)
+    assert xb[0] == pytest.approx(3.0, abs=0.01)
+    assert xb[1] == pytest.approx(-2.0, abs=0.01)
+
+    # chi2 = (x-1)^2 -> Delta chi2 = 1 at +-1
+    xs = np.linspace(-3, 5, 81)
+    chis = (xs - 1.0) ** 2
+    lo, hi = _interval_from_profile(xs, chis, 1.0, 0.0)
+    assert lo == pytest.approx(1.0, abs=0.05)
+    assert hi == pytest.approx(1.0, abs=0.05)

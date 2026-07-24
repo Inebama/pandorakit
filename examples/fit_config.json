@@ -1,0 +1,19 @@
+{
+  "root": "~/pandora",
+  "base_dat": "~/pandora/v2.1.1/demos/6/leidca2.dat",
+  "mod":      "~/pandora/v2.1.1/demos/6/leid.mod",
+  "atm":      "~/pandora/v2.1.1/atoms/ca2l5.atm",
+  "res":      "~/pandora/v2.1.1/demos/6/leidca2.res",
+  "jnu":      "~/pandora/v2.1.1/demos/6/leidca2.jnu",
+  "transition": [5, 1],
+  "line_center": 3933.7,
+  "resolution": 34000,
+  "fit_window_A": 3.0,
+  "workdir": "~/pandora/runs/fit_star1",
+  "parameters": [
+    {"name": "v_top",  "grid": [6, 10, 14, 18], "kind": "float", "bounds": [3, 22]},
+    {"name": "i_zero", "grid": [45, 50, 55, 60], "kind": "int"}
+  ],
+  "fixed": {"i_top": 15},
+  "workers": 3
+}

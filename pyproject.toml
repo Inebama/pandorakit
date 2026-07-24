@@ -25,6 +25,7 @@ dependencies = []
 
 [project.optional-dependencies]
 plot = ["numpy", "matplotlib"]
+fit = ["numpy"]
 test = ["pytest"]
 
 [project.scripts]

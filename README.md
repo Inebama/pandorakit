@@ -92,6 +92,17 @@ tests/               pytest suite
   [docs/course/](docs/course/README.md), physics crosschecked against
   Hubeny & Mihalas (2015) and Gray (2022).
 
+## Automated fitting (single star)
+
+`pandorakit.fit` + `examples/fit_single_star.py` implement the full
+observed-spectrum-to-parameters loop: cached PANDORA forward model,
+parallel grid + Nelder-Mead, **Δχ² profile-likelihood error bars**,
+and 2D degeneracy maps. Validated by blind recovery of known
+parameters from a mock observation. Learn it interactively in
+[notebooks/fitting_tutorial.ipynb](notebooks/fitting_tutorial.ipynb);
+the exhaustive input reference is [docs/INPUTS.md](docs/INPUTS.md) and
+the complete API reference [docs/API.md](docs/API.md).
+
 ## Status & caveats
 
 * Build verified with gfortran 14 on macOS/arm64; demos 1–7 run.
