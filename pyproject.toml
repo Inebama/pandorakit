@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pandorakit"
+version = "0.1.0"
+description = "Python interface to the PANDORA non-LTE stellar atmosphere and spectrum synthesis code (Avrett & Loeser, CfA)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+  { name = "Ian Baeza", email = "ian.baeza.astro@gmail.com" },
+]
+keywords = ["astronomy", "stellar-atmospheres", "NLTE", "radiative-transfer", "spectroscopy"]
+classifiers = [
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Astronomy",
+  "Programming Language :: Python :: 3",
+]
+# Deliberately zero required dependencies: the core package is pure
+# stdlib so it installs anywhere PANDORA builds. numpy/matplotlib are
+# optional conveniences.
+dependencies = []
+
+[project.optional-dependencies]
+plot = ["numpy", "matplotlib"]
+test = ["pytest"]
+
+[project.scripts]
+pandorakit = "pandorakit.cli:main"
+
+[tool.setuptools]
+packages = ["pandorakit"]
+
+[tool.setuptools.package-data]
+pandorakit = ["data/*.json"]

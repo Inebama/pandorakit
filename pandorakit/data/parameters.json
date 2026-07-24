@@ -1,0 +1,6644 @@
+[
+ {
+  "name": "A",
+  "notes": "*31, *93",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "Einstein A value",
+  "default": null
+ },
+ {
+  "name": "ABD",
+  "notes": "*1",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "abundance of the ion of the run",
+  "default": null
+ },
+ {
+  "name": "ACE",
+  "notes": null,
+  "length": "[NSL]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "CE (default) addend",
+  "default": null
+ },
+ {
+  "name": "ACI",
+  "notes": null,
+  "length": "[NSL]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "CI (default) addend",
+  "default": null
+ },
+ {
+  "name": "ADMAS",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "angular diameter (milliarcseconds)",
+  "default": "as implied by ADS"
+ },
+ {
+  "name": "ADS",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "star/Sun angular diameter ratio",
+  "default": "1.0"
+ },
+ {
+  "name": "ADT",
+  "notes": null,
+  "length": "[NDT]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "Type-2 dust opacity function",
+  "default": "(5.1, 4.7, 4.3, 3.8, 3.4, 3.0, 2.65, 2.4, 2.2, 2.1, 2.1, 2.0, 2.1, 2.3, 2.3, 2.2, 1.9, 1.8, 1.3, 0.93, 0.34, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3)"
+ },
+ {
+  "name": "AEL",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "added Helium electrons",
+  "default": null
+ },
+ {
+  "name": "AHM",
+  "notes": null,
+  "length": "[MHM]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "H^- bound-free absorption coefficient",
+  "default": "(0.01989, 0.04974, 0.1302, 0.4052, 0.7407, 1.107, 1.485, 1.862, 2.226, 2.571, 2.887, 3.172, 3.419, 3.625, 3.789, 3.906, 3.977, 4.001, 3.977, 3.907, 3.791, 3.632, 3.432, 3.194, 2.923, 2.624, 2.302, 1.965, 1.619, 1.275, 0.9453, 0.7918, 0.6512, 0.5431)"
+ },
+ {
+  "name": "AL",
+  "notes": null,
+  "length": "[NL]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "added recombination fraction",
+  "default": "AL_1 = 1.0, AL_i = 0.0, i \\leq 2 \\leq NL"
+ },
+ {
+  "name": "ALBDT",
+  "notes": null,
+  "length": "[NDT]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "Type-2 dust albedo",
+  "default": "0.9"
+ },
+ {
+  "name": "ALBDUST",
+  "notes": null,
+  "length": "[LDU]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "Type-1 dust albedo",
+  "default": null
+ },
+ {
+  "name": "ALBK",
+  "notes": null,
+  "length": "[NKA]",
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "scattering albedo parameter for Background Line Opacities (see Section 9)",
+  "default": "(1.0, 0.0)"
+ },
+ {
+  "name": "ALK",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 2*,2",
+  "mode": "float",
+  "description": "singly-ionized Aluminum number density",
+  "default": "computed in LTE"
+ },
+ {
+  "name": "ALN",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "Aluminum-I level populations",
+  "default": "ALN_ij computed in LTE, for all levels j such that j > NAL"
+ },
+ {
+  "name": "AOWXP",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "alpha-old weight exponent for Special He-II (Special N-1 calculation, Diffusion)",
+  "default": null
+ },
+ {
+  "name": "APARAD",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "dielectronic recombination parameter",
+  "default": null
+ },
+ {
+  "name": "APCDP",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "dielectronic recombination parameter",
+  "default": null
+ },
+ {
+  "name": "APCI",
+  "notes": null,
+  "length": "[NAPKNT]",
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "dielectronic recombination parameter",
+  "default": null
+ },
+ {
+  "name": "APDDIFC",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "ambipolar diffusion velocity calculation parameter",
+  "default": "90.7"
+ },
+ {
+  "name": "APDDTFC",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "ambipolar diffusion velocity calculation parameter",
+  "default": "36.6"
+ },
+ {
+  "name": "APDTEXP",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "ambipolar diffusion velocity calculation parameter",
+  "default": "1.76"
+ },
+ {
+  "name": "APDXICA",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "ambipolar diffusion velocity calculation parameter",
+  "default": "1.75"
+ },
+ {
+  "name": "APDXICB",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "ambipolar diffusion velocity calculation parameter",
+  "default": "4.5"
+ },
+ {
+  "name": "APDXICC",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "ambipolar diffusion velocity calculation parameter",
+  "default": "0.02"
+ },
+ {
+  "name": "APDXICD",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "ambipolar diffusion velocity calculation parameter",
+  "default": "-3.5 \\pb"
+ },
+ {
+  "name": "APEI",
+  "notes": null,
+  "length": "[NAPKNT]",
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "dielectronic recombination parameter",
+  "default": null
+ },
+ {
+  "name": "APETA",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "dielectronic recombination parameter",
+  "default": null
+ },
+ {
+  "name": "APWRA",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "dielectronic recombination parameter",
+  "default": null
+ },
+ {
+  "name": "APWRB",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "dielectronic recombination parameter",
+  "default": null
+ },
+ {
+  "name": "ASMCR",
+  "notes": "*92",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "sequential smoothing parameter",
+  "default": "0.001"
+ },
+ {
+  "name": "ATOLAB",
+  "notes": null,
+  "length": null,
+  "codes": "D, 2",
+  "mode": "str",
+  "description": "``name'' of ion model data file",
+  "default": "``!NONAME!''"
+ },
+ {
+  "name": "AW",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 5*,5",
+  "mode": "float",
+  "description": "integrated diagonal of WN-matrix",
+  "default": null
+ },
+ {
+  "name": "BANDE",
+  "notes": "*77",
+  "length": "[NAB]",
+  "codes": "B, 2",
+  "mode": "int",
+  "description": "Composite Line Opacities wavelengths bands continuum eclipse calculation switch",
+  "default": null
+ },
+ {
+  "name": "BANDL",
+  "notes": "*77",
+  "length": "[NAB]",
+  "codes": "B, 2",
+  "mode": "float",
+  "description": "lower limits of Composite Line Opacity wavelengths bands (see Section 9)",
+  "default": null
+ },
+ {
+  "name": "BANDU",
+  "notes": "*77",
+  "length": "[NAB]",
+  "codes": "B, 2",
+  "mode": "float",
+  "description": "upper limits of Composite Line Opacity wavelengths bands (see Section 9)",
+  "default": null
+ },
+ {
+  "name": "BANDY",
+  "notes": null,
+  "length": "[NAB]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "method control parameter for Composite Line Opacity (see Section 9)",
+  "default": "all = -1.0"
+ },
+ {
+  "name": "BD",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 3*,3",
+  "mode": "float",
+  "description": "departure coefficient of the levels of the ion of the run",
+  "default": "computed, using input number densities"
+ },
+ {
+  "name": "BDAL",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "departure coefficients of the levels of Aluminum-I",
+  "default": "computed, using input Aluminum-I level populations"
+ },
+ {
+  "name": "BDC",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "departure coefficients of the levels of Carbon-I",
+  "default": "computed, using input Carbon-I level populations"
+ },
+ {
+  "name": "BDCA",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "departure coefficients of the levels of Calcium-I",
+  "default": "computed, using input Calcium-I level populations"
+ },
+ {
+  "name": "BDFE",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "departure coefficients of the levels of Iron-I",
+  "default": "computed, using input Iron-I level populations"
+ },
+ {
+  "name": "BDH",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "departure coefficients of the levels of Hydrogen",
+  "default": "computed, using input Hydrogen level populations"
+ },
+ {
+  "name": "BDHE",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "departure coefficients of the levels of Helium-I",
+  "default": "computed, using input Helium-I level populations"
+ },
+ {
+  "name": "BDHE2",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "departure coefficients of the levels of Helium-II",
+  "default": "computed, using input Helium-II level populations"
+ },
+ {
+  "name": "BDHM",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "departure coefficient of H-minus",
+  "default": "BDHM_i = 1.0, all i"
+ },
+ {
+  "name": "BDMG",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "departure coefficients of the levels of Magnesium-I",
+  "default": "computed, using input Magnesium-I level populations"
+ },
+ {
+  "name": "BDNA",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "departure coefficients of the levels of Sodium-I",
+  "default": "computed, using input Sodium-I level populations"
+ },
+ {
+  "name": "BDO",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "departure coefficients of the levels of Oxygen-I",
+  "default": "computed, using input Oxygen-I level populations"
+ },
+ {
+  "name": "BDOPT",
+  "notes": "*43",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "str",
+  "description": "b-ratios selection parameter",
+  "default": "``BDJ''"
+ },
+ {
+  "name": "BDO2",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "departure coefficients of the levels of Oxygen-II",
+  "default": "computed, using input Oxygen-II level populations"
+ },
+ {
+  "name": "BDO3",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "departure coefficients of the levels of Oxygen-III",
+  "default": "computed, using input Oxygen-III level populations"
+ },
+ {
+  "name": "BDS",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "departure coefficients of the levels of Sulphur-I",
+  "default": "computed, using input Sulphur-I level populations"
+ },
+ {
+  "name": "BDSI",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "departure coefficients of the levels of Silicon-I",
+  "default": "computed, using input Silicon-I level populations"
+ },
+ {
+  "name": "BHORIZ",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "magnetic field strength",
+  "default": null
+ },
+ {
+  "name": "BLCSW",
+  "notes": "*14",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "int",
+  "description": "broadening components switch (a.k.a. damping components selector)",
+  "default": "31"
+ },
+ {
+  "name": "BLIMG",
+  "notes": "*34",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "absorption contributors graph axis limit",
+  "default": "-1.301 [ = log(0.05)]"
+ },
+ {
+  "name": "BMWAC",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "beam width parameter for continuum eclipse calculation",
+  "default": "0.1"
+ },
+ {
+  "name": "BXI",
+  "notes": "*66",
+  "length": "[KBX]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "background lines frequency table (half profile)",
+  "default": "(0., .03, .06, .1, .15, .22, .3, .4, .6, .9, 1.2, 1.5, 2., 3., 5., 10., 20., 40., 70., 110., 200., 500., 1000., 2000., 5000.)"
+ },
+ {
+  "name": "CAK",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 2*,2",
+  "mode": "float",
+  "description": "singly ionized Calcium number density",
+  "default": "computed in LTE"
+ },
+ {
+  "name": "CAN",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "Calcium-I level populations",
+  "default": "CAN_ij computed in LTE, for all levels j such that j > NCA"
+ },
+ {
+  "name": "CCHX",
+  "notes": "*95",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "upper-level charge-exchange cross-section multiplier",
+  "default": "1.0"
+ },
+ {
+  "name": "CDL",
+  "notes": "*77, *105",
+  "length": "[LDL]",
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "weights for blended line components",
+  "default": "1.0"
+ },
+ {
+  "name": "CDZ",
+  "notes": "*82",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "fluid velocity parameter",
+  "default": "100."
+ },
+ {
+  "name": "CE",
+  "notes": "*25, *93",
+  "length": "[NTE]",
+  "codes": "D, 5",
+  "mode": "float",
+  "description": "collisional excitation coefficient",
+  "default": "computed (see Section 19)"
+ },
+ {
+  "name": "CEDMN",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "impact-parameter CE-value calculation parameter (for integration)",
+  "default": "10^-6"
+ },
+ {
+  "name": "CEDMX",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "impact-parameter CE-value calculation parameter (for integration)",
+  "default": "10^3"
+ },
+ {
+  "name": "CEFEQ",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "impact-parameter CE-value calculation parameter (for integration)",
+  "default": "10^-2"
+ },
+ {
+  "name": "CEMETHOD",
+  "notes": "*93, *139",
+  "length": null,
+  "codes": "D",
+  "mode": null,
+  "description": "CE-method selectors",
+  "default": "for Hydrogen: (SCHOLZ, GIOVAN, JOHNSON); otherwise: (SEATON, VREGE)"
+ },
+ {
+  "name": "CEQMX",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "H2 number density control parameter",
+  "default": "10^6"
+ },
+ {
+  "name": "CGR",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "gravity ratio, with respect to Sun",
+  "default": "1.0"
+ },
+ {
+  "name": "CHEFLOW",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Helium flow constant for RHEAB calculation",
+  "default": null
+ },
+ {
+  "name": "CHI",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 5*,5",
+  "mode": "float",
+  "description": "RHO-like line transfer quantity",
+  "default": null
+ },
+ {
+  "name": "CHLIM",
+  "notes": "*19",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "RHOW parameter",
+  "default": "0.5"
+ },
+ {
+  "name": "CHOP",
+  "notes": "*19",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "a RHO selection parameter",
+  "default": "1.0"
+ },
+ {
+  "name": "CI",
+  "notes": "*93",
+  "length": "[NTE]",
+  "codes": "D, 3",
+  "mode": "float",
+  "description": "collisional ionization coefficient",
+  "default": "computed (see Section 19)"
+ },
+ {
+  "name": "CIJADD",
+  "notes": "*91",
+  "length": "[N]",
+  "codes": "D, 5*,5",
+  "mode": "float",
+  "description": "term to be added to CIJ",
+  "default": null
+ },
+ {
+  "name": "CIMETHOD",
+  "notes": "*93, *139",
+  "length": null,
+  "codes": "D",
+  "mode": null,
+  "description": "CE-method selectors",
+  "default": "for Hydrogen: (SHAH, CLARK); otherwise: (AR, CLARK)"
+ },
+ {
+  "name": "CK",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 2*,2",
+  "mode": "float",
+  "description": "singly-ionized Carbon number density",
+  "default": "computed in LTE"
+ },
+ {
+  "name": "CKADD",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 3*,3",
+  "mode": "float",
+  "description": "term to be added to CK",
+  "default": null
+ },
+ {
+  "name": "CLEVELS",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "diffusion calculation parameter",
+  "default": "2.0"
+ },
+ {
+  "name": "CLM",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "scattering albedo parameter for Background Line Opacities (see Section 9)",
+  "default": "1.0"
+ },
+ {
+  "name": "CLOGG",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "log(surface gravity)",
+  "default": "as implied by CGR"
+ },
+ {
+  "name": "CLNH",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "HSE calculation parameter",
+  "default": "2.0"
+ },
+ {
+  "name": "CN",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "Carbon-I level populations",
+  "default": "CN_ij computed in LTE, for all levels j such that j > NLC"
+ },
+ {
+  "name": "CN1S",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "rcheck-criterion for Special-N1 (diffusion)",
+  "default": "0.01"
+ },
+ {
+  "name": "COLINES",
+  "notes": "*112",
+  "length": null,
+  "codes": "D",
+  "mode": null,
+  "description": "CO lines control parameters",
+  "default": "see Note *112"
+ },
+ {
+  "name": "COMU",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "mu-value for CO lines opacity calculation",
+  "default": null
+ },
+ {
+  "name": "CORMAX",
+  "notes": "*130",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "limit parameter for ORIGINS and CONTRIBUTORS printouts",
+  "default": "-1.0"
+ },
+ {
+  "name": "CORMIN",
+  "notes": "*130",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "limit parameter for ORIGINS and CONTRIBUTORS printouts",
+  "default": "-1.0"
+ },
+ {
+  "name": "CP",
+  "notes": "*56, *93",
+  "length": "[NSL]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "photoionization cross-section",
+  "default": "computed (see Section 19)"
+ },
+ {
+  "name": "CPRESS",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "specified constant pressure",
+  "default": null
+ },
+ {
+  "name": "CQA",
+  "notes": "*117",
+  "length": "[NCQ]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "`Line Opacity' scattering albedo parameter",
+  "default": "(10^-4, 10^-3, 10^-2, 10^-1, 1.0)"
+ },
+ {
+  "name": "CQM",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "scattering albedo parameter for Background Line Opacities (see Section 9)",
+  "default": null
+ },
+ {
+  "name": "CQT",
+  "notes": "*117",
+  "length": "[NCQ]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "`Line Opacity' scattering albedo parameter",
+  "default": "(4000, 5000, 6000, 7000, 8000)"
+ },
+ {
+  "name": "CRD",
+  "notes": "*77, *93,* 105",
+  "length": "[LDL]",
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "radiative broadening halfwidth",
+  "default": null
+ },
+ {
+  "name": "CRS",
+  "notes": "*93",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "resonance broadening halfwidth",
+  "default": null
+ },
+ {
+  "name": "CSDW",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "number of Doppler widths from line center at which the Hydrogen Stark components strengths are reduced by the factor 1/e",
+  "default": "1.0"
+ },
+ {
+  "name": "CSFCRIT",
+  "notes": null,
+  "length": null,
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "convergence criterion for CSF iteration",
+  "default": "10^-5"
+ },
+ {
+  "name": "CSK",
+  "notes": "*93, *105",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "Stark broadening halfwidth",
+  "default": null
+ },
+ {
+  "name": "CSTARK",
+  "notes": "*107",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "Hydrogen Stark broadening (convolution) switch",
+  "default": null
+ },
+ {
+  "name": "CUTFE",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "cut-off criterion for injection function integration (fast electrons)",
+  "default": "10^-8"
+ },
+ {
+  "name": "CTCO",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "NCO calculation temperature enhancement factor",
+  "default": null
+ },
+ {
+  "name": "CTMX",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "maximum NCO temperature enhancement",
+  "default": "0.2"
+ },
+ {
+  "name": "CVSB",
+  "notes": "*82",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "fluid velocity parameter for VSB",
+  "default": null
+ },
+ {
+  "name": "CVW",
+  "notes": "*93, *105",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "van der Waals broadening halfwidth",
+  "default": null
+ },
+ {
+  "name": "CVX",
+  "notes": "*82",
+  "length": "[NVX]",
+  "codes": "F, 2",
+  "mode": "float",
+  "description": "fluid velocity parameters for VX",
+  "default": null
+ },
+ {
+  "name": "CVXF",
+  "notes": "*82",
+  "length": null,
+  "codes": "F, 1",
+  "mode": "float",
+  "description": "fluid velocity parameter for flow broadening velocities",
+  "default": "25.0"
+ },
+ {
+  "name": "CVXM",
+  "notes": "*82",
+  "length": null,
+  "codes": "F, 1",
+  "mode": "float",
+  "description": "fluid velocity parameter for flow broadening velocities",
+  "default": null
+ },
+ {
+  "name": "CVXS",
+  "notes": "*82",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "fluid velocity parameter for VXS",
+  "default": null
+ },
+ {
+  "name": "CVZ",
+  "notes": "*82",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "fluid velocity parameter",
+  "default": "smallest Z_i such that NH_i > 10^11"
+ },
+ {
+  "name": "CWJ",
+  "notes": "*19",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "a RHOJ calculation parameter",
+  "default": "0.5"
+ },
+ {
+  "name": "CWR",
+  "notes": "*19",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "a RHO selection parameter",
+  "default": "0.1"
+ },
+ {
+  "name": "DDL",
+  "notes": "*77, *105",
+  "length": "[LDL]",
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "displacements from reference wavelength of blended line components, in Angstroms (see also DWN)",
+  "default": null
+ },
+ {
+  "name": "DDR",
+  "notes": "*42",
+  "length": "[NDR]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "DR parameter, PRD transitions",
+  "default": "(1.0, 0.9, 0.65, 0.4, 0.1, 0.05, 0.0)"
+ },
+ {
+  "name": "DDT",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Type-2 dust opacity calculation convergence criterion",
+  "default": "0.01"
+ },
+ {
+  "name": "DELLIM",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "DEL-criterion for using DIRECT instead of FULL solution",
+  "default": "10^-6"
+ },
+ {
+  "name": "DELTB",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "departure coefficients editing parameter",
+  "default": "0.01"
+ },
+ {
+  "name": "DELWAVE",
+  "notes": "*76",
+  "length": "[NWS]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "`subtractional' wavelengths for continuum calculations",
+  "default": null
+ },
+ {
+  "name": "DFDUST",
+  "notes": null,
+  "length": "[LDU]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "Type-1 dust factor",
+  "default": null
+ },
+ {
+  "name": "DGM",
+  "notes": "*138",
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "depth-dependent G multiplier (HSE)",
+  "default": "all = 1.0"
+ },
+ {
+  "name": "DGMZ",
+  "notes": "*138",
+  "length": "[NGM]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "standard table of DGM (as a function of ZGM) for the quiet sun",
+  "default": "(.64, .645, .66, .68, .71, .74, .77, .81, .86, .89, .92, .95, .97, .985, .99, .995, .995, .995, .99, .98, .97, .965, .96)"
+ },
+ {
+  "name": "DLU",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "dilution factor",
+  "default": "1.0"
+ },
+ {
+  "name": "DO",
+  "notes": null,
+  "length": "[variable]",
+  "codes": "B, 2",
+  "mode": "str",
+  "description": "enable program options (see Section 6 for further details)",
+  "default": null
+ },
+ {
+  "name": "DOFDB",
+  "notes": "*80",
+  "length": "[ \\leq 2 \\timesNT]",
+  "codes": "D, 2",
+  "mode": "int",
+  "description": "alternate form of LSFFDB",
+  "default": null
+ },
+ {
+  "name": "DOFLUX",
+  "notes": "*79",
+  "length": "[ \\leq 2 \\timesNT]",
+  "codes": "D, 2",
+  "mode": "int",
+  "description": "alternate form of LFLUX",
+  "default": null
+ },
+ {
+  "name": "DOPROF",
+  "notes": "*78",
+  "length": "[ \\leq 2 \\timesNT]",
+  "codes": "D, 2",
+  "mode": "int",
+  "description": "alternate form of PROF",
+  "default": null
+ },
+ {
+  "name": "DOSFPRNT",
+  "notes": "*81",
+  "length": "[ \\leq 2 \\timesNT]",
+  "codes": "D, 2",
+  "mode": "int",
+  "description": "alternate form of LSFPRINT",
+  "default": null
+ },
+ {
+  "name": "DPMULT",
+  "notes": null,
+  "length": null,
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "damping multiplier",
+  "default": "1.0"
+ },
+ {
+  "name": "DQMAX",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "parameter for injection function integration (fast electrons)",
+  "default": "2.0"
+ },
+ {
+  "name": "DQMIN",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "parameter for injection function integration (fast electrons)",
+  "default": "0.01"
+ },
+ {
+  "name": "DRHO",
+  "notes": null,
+  "length": null,
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "RHO editing parameter",
+  "default": "0.05"
+ },
+ {
+  "name": "DRLIM",
+  "notes": "*42",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "DR parameter, PRD transitions",
+  "default": "0.01"
+ },
+ {
+  "name": "DWAVE",
+  "notes": "*65",
+  "length": "[NDV]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "Continuum Source Function dump wavelengths table",
+  "default": null
+ },
+ {
+  "name": "DWN",
+  "notes": "*77",
+  "length": "[LDL]",
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "= DDL, but in wavenumbers",
+  "default": null
+ },
+ {
+  "name": "DZMSS",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Z-from-Mass calculation parameter",
+  "default": "0.01"
+ },
+ {
+  "name": "ECLI",
+  "notes": "*58",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "int",
+  "description": "Eclipse line profiles computation switch",
+  "default": null
+ },
+ {
+  "name": "EIDIF",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "NE-iterations convergence criterion",
+  "default": "10^-4"
+ },
+ {
+  "name": "ELEMENT",
+  "notes": null,
+  "length": null,
+  "codes": "D",
+  "mode": null,
+  "description": "element data (see Section 10)",
+  "default": null
+ },
+ {
+  "name": "ELLED",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "particle energy dissipation calculation parameter `L' (fast electrons)",
+  "default": "2.4 \\times 10^-11"
+ },
+ {
+  "name": "ELSYM",
+  "notes": "*93",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "str",
+  "description": "chemical symbol of the ion of the run",
+  "default": "``ZZ''"
+ },
+ {
+  "name": "EMXED",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "particle energy dissipation calculation parameter `EMAX' (fast electrons)",
+  "default": "10^-6"
+ },
+ {
+  "name": "EPCBR",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "branching ratio for supplementary levels in Lyman EPSILON-1",
+  "default": null
+ },
+ {
+  "name": "EPDUST",
+  "notes": null,
+  "length": "[LDU]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "Type-1 dust dilution factor",
+  "default": null
+ },
+ {
+  "name": "EP1",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "Lyman EPSILON-1",
+  "default": null
+ },
+ {
+  "name": "EP2",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "Lyman EPSILON-2",
+  "default": null
+ },
+ {
+  "name": "ESCTAU",
+  "notes": "*48",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "TAU criterion for automatic use of escape probability solution",
+  "default": "5.0"
+ },
+ {
+  "name": "EXLYM",
+  "notes": "*67",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Lyman change-over TAU parameter",
+  "default": "10."
+ },
+ {
+  "name": "FABD",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "multiplier for element abundances",
+  "default": "1.0"
+ },
+ {
+  "name": "FBVMX",
+  "notes": null,
+  "length": null,
+  "codes": "F, 1",
+  "mode": "float",
+  "description": "maximum velocity value for flow broadening",
+  "default": "100."
+ },
+ {
+  "name": "FCE",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 5*,5",
+  "mode": "float",
+  "description": "CE-enhancement factors",
+  "default": null
+ },
+ {
+  "name": "FEK",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 2*,2",
+  "mode": "float",
+  "description": "singly-ionized Iron number density",
+  "default": "computed in LTE"
+ },
+ {
+  "name": "FEN",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "Iron-I level populations",
+  "default": "FEN_ij computed in LTE, for all levels j such that j > NFE"
+ },
+ {
+  "name": "FILE",
+  "notes": "*44",
+  "length": null,
+  "codes": "B,D,F,H",
+  "mode": "str",
+  "description": "input file designation",
+  "default": null
+ },
+ {
+  "name": "FINK",
+  "notes": null,
+  "length": "[INK]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "incident radiation input values",
+  "default": "(0., 3.0 \\times 10^-12, 3.0 \\times 10^-12, 1.5 \\times 10^-12, 1.5 \\times 10^-12, 0.)"
+ },
+ {
+  "name": "FKUR",
+  "notes": null,
+  "length": "[KURNWV]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "multiplier for Statistical Line Opacity (see Section 9)",
+  "default": "all = 1.0 (KURNWV = 53, built in)"
+ },
+ {
+  "name": "FMCDL",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Hydrogen Stark splitting components elimination criterion",
+  "default": "0.1"
+ },
+ {
+  "name": "FMVLIM",
+  "notes": "*82",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "fluid velocity multiplier limit",
+  "default": "10^-4"
+ },
+ {
+  "name": "FNH",
+  "notes": null,
+  "length": "[NFH]",
+  "codes": "F, 2",
+  "mode": "float",
+  "description": "standard tabel of flow velocity for flow broadening",
+  "default": "(10., 9., 7., 5., 3., 2., 1., 0.)"
+ },
+ {
+  "name": "FNRMLA",
+  "notes": null,
+  "length": "65",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "normalizing factor for simulated background H Ly \\alpha profile",
+  "default": "all = 1.0"
+ },
+ {
+  "name": "FNRMLB",
+  "notes": null,
+  "length": "65",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "normalizing factor for simulated background H Ly \\beta profile",
+  "default": "all = 1.0"
+ },
+ {
+  "name": "FRCDL",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Hydrogen Stark splitting components elimination criterion",
+  "default": "0.01"
+ },
+ {
+  "name": "FROSCE",
+  "notes": "*93",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "fraction-of-classical-oscillator-strength used in the calculation of collision rates for forbidden transitions",
+  "default": "0.01"
+ },
+ {
+  "name": "FRR",
+  "notes": null,
+  "length": "[MRR]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "radius fraction",
+  "default": "(0.0, 0.5, 0.8, 0.9, 0.95, 1.0)"
+ },
+ {
+  "name": "FSTKM",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Hydrogen Stark splitting reduction factor",
+  "default": "1.0"
+ },
+ {
+  "name": "FZION",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "ZION-multiplier for diffusion calculation",
+  "default": "1.0"
+ },
+ {
+  "name": "FZLIM",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Z-from-Mass calculation parameter",
+  "default": "1.5"
+ },
+ {
+  "name": "GK",
+  "notes": "*123",
+  "length": "[KK]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "Gaunt factors for Level-KOLEV-to-Continuum calculation",
+  "default": "RRCP(KOLEV)"
+ },
+ {
+  "name": "GMMA",
+  "notes": "*42",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "gamma-parameter, PRD transitions",
+  "default": "-1.0"
+ },
+ {
+  "name": "HEABL",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Helium abundance limit factor for RHEAB calculation",
+  "default": "3.0"
+ },
+ {
+  "name": "HEK",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 2*,2",
+  "mode": "float",
+  "description": "singly-ionized Helium number density",
+  "default": "computed in LTE"
+ },
+ {
+  "name": "HEL",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "weight for HSE calculation",
+  "default": "1.0"
+ },
+ {
+  "name": "HEN",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "Helium-I level populations",
+  "default": "HEN_ij computed in LTE, for all levels j such that j > NLZ"
+ },
+ {
+  "name": "HE2K",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 2*,2",
+  "mode": "float",
+  "description": "doubly-ionized Helium number density",
+  "default": "computed in LTE"
+ },
+ {
+  "name": "HE2N",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "Helium-II level populations",
+  "default": "HE2N_ij computed in LTE, for all levels j such that j > NZ2"
+ },
+ {
+  "name": "HE304",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "He-II \\lambda 304 line mean intensity",
+  "default": null
+ },
+ {
+  "name": "HN",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "Hydrogen level populations",
+  "default": "HN_ij computed in LTE, for all levels j such that j > NLH"
+ },
+ {
+  "name": "HNAJL",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "limit for NH-adjustment factor in HSE calculation",
+  "default": "10^20"
+ },
+ {
+  "name": "HNDF",
+  "notes": null,
+  "length": "[NFH]",
+  "codes": "F, 2",
+  "mode": "float",
+  "description": "Hydrogen density table for FNH",
+  "default": "(1.0\\ph, 3.0\\ph, 1.0\\pj, 3.0\\pj, 1.0\\pk, 3.0\\pk, 1.0\\pl, 3.0\\pl)"
+ },
+ {
+  "name": "HNDV",
+  "notes": "*90",
+  "length": "[NVH]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "Hydrogen density table for VNH",
+  "default": "(1.0\\pf, 2.0\\pf, 5.0\\pf, 1.0\\pg, 2.0\\pg, 5.0\\pg, 8.38\\pg, 1.07\\ph, 1.61\\ph, 3.17\\ph, 7.73\\ph, 2.71\\pj, 9.32\\pj, 2.04\\pk, 6.69\\pk, 9.82\\pk, 2.25\\pl, 3.55\\pl, 6.01\\pl, 9.87\\pl, 1.64\\pm, 2.09\\pm, 3.37\\pm, 4.22\\pm, 6.58\\pm, 1.02\\pn, 2.33\\pn, 4.24\\pn, 6.05\\pn, 8.33\\pn, 1.03\\po, 1.15\\po, 1.22\\po, 1.27\\po, 1.30\\po, 1.32\\po, 1.34\\po, 1.35\\po)"
+ },
+ {
+  "name": "HSBDMN",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Hydrogen Stark broadening parameter, for convolution calculation",
+  "default": "10^-5"
+ },
+ {
+  "name": "HSBDMX",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Hydrogen Stark broadening parameter, for convolution calculation",
+  "default": "10^3"
+ },
+ {
+  "name": "HSBFEQ",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Hydrogen Stark broadening parameter, for convolution calculation",
+  "default": "0.1"
+ },
+ {
+  "name": "HSBM",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Hydrogen Stark broadening parameter, for convolution calculation",
+  "default": "20.0"
+ },
+ {
+  "name": "HSEC",
+  "notes": "*15",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "weight for HSE calculation",
+  "default": "1.0"
+ },
+ {
+  "name": "HSLITER",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "number of HSL iterations",
+  "default": "1"
+ },
+ {
+  "name": "HTAU",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "HSE calculation parameter",
+  "default": "1.0"
+ },
+ {
+  "name": "IBETSW",
+  "notes": "*126",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "beta-equation selection switch, diffusion",
+  "default": null
+ },
+ {
+  "name": "IBNVIEW",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "depth index for illustration of BD- and ND-calculations trace",
+  "default": "(JEDIT+1)"
+ },
+ {
+  "name": "IBRDP",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "diffusion d-coefficients debug dump switch",
+  "default": null
+ },
+ {
+  "name": "ICDIT",
+  "notes": "*101",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "dI/dh continuum wavelengths selector",
+  "default": "1"
+ },
+ {
+  "name": "ICHDP",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "hydrogen collision rates calculation dump depth index",
+  "default": null
+ },
+ {
+  "name": "ICHSW",
+  "notes": "*136",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "collision-with-Hydrogen switch",
+  "default": null
+ },
+ {
+  "name": "ICR",
+  "notes": null,
+  "length": "[NCR]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "values of incident coronal radiation",
+  "default": null
+ },
+ {
+  "name": "ICXDP",
+  "notes": "*95",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "upper-level charge-exchange dump depth index",
+  "default": null
+ },
+ {
+  "name": "IDEDP",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "ion broadening (Hydrogen) dump switch",
+  "default": null
+ },
+ {
+  "name": "IDEX",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "extra information switch for standard-output (or log file)",
+  "default": "10"
+ },
+ {
+  "name": "IDFDI",
+  "notes": "*89",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "d-coefficients dump index",
+  "default": "N/4"
+ },
+ {
+  "name": "IDFDM",
+  "notes": "*89",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "d-coefficients method selection switch",
+  "default": "1"
+ },
+ {
+  "name": "IDFDS",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "d-coefficients smoothing",
+  "default": "1"
+ },
+ {
+  "name": "IDFSW",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "dI/dh details print switch",
+  "default": null
+ },
+ {
+  "name": "IDNRT",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "switch for calculation of DNRT, DNRTC in Lyman",
+  "default": "1"
+ },
+ {
+  "name": "IDRCD",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "index of disk ray for CSF debug printout",
+  "default": "1"
+ },
+ {
+  "name": "IDRDP",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "depth index for option DRDMP",
+  "default": "N/2"
+ },
+ {
+  "name": "IDWIN",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "DW-dump index increment",
+  "default": null
+ },
+ {
+  "name": "IFXDS",
+  "notes": "*70",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "continuum flux detail output control",
+  "default": null
+ },
+ {
+  "name": "IGII",
+  "notes": "*42",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "RII-approximation selector (PRD)",
+  "default": "1"
+ },
+ {
+  "name": "IGMSW",
+  "notes": "*42",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "alternate GMMA for H Lyman alpha and beta (PRD)",
+  "default": null
+ },
+ {
+  "name": "IHDMP",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "dump output control switch for Line Flux Distribution calculation",
+  "default": null
+ },
+ {
+  "name": "IHEAB",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "reference depth index for RHEAB calculation",
+  "default": null
+ },
+ {
+  "name": "IHSDD",
+  "notes": "*106",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Hydrogen Stark broadening dump switch",
+  "default": null
+ },
+ {
+  "name": "IHSDP",
+  "notes": "*106",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Hydrogen Stark broadening dump switch",
+  "default": null
+ },
+ {
+  "name": "IHSKM",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Hydrogen Stark broadening calculation table limit",
+  "default": "100"
+ },
+ {
+  "name": "IHSSM",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Hydrogen Stark broadening calculation table limit",
+  "default": "2000"
+ },
+ {
+  "name": "IHSSP",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Hydrogen Stark splitting control switch",
+  "default": null
+ },
+ {
+  "name": "IHSSW",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Hydrogen Stark broadening (convolution) switch",
+  "default": null
+ },
+ {
+  "name": "ILI",
+  "notes": "*19",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "a RHO selection parameter",
+  "default": null
+ },
+ {
+  "name": "IMUCD",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "index of XMU for Continuum Source Function debug printout",
+  "default": "1"
+ },
+ {
+  "name": "INCEI",
+  "notes": "*93",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "depth index for CI and CE comparison calculations",
+  "default": "index of TE-value closest to 8000 K, going in"
+ },
+ {
+  "name": "INCH",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "RHO weight adjustment parameter",
+  "default": "0.1"
+ },
+ {
+  "name": "INDRN",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "input number densities renormalization switch",
+  "default": "1"
+ },
+ {
+  "name": "INFSM",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Lyman RK-Kolev smoothing delimiter",
+  "default": "1"
+ },
+ {
+  "name": "INK",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of XINK",
+  "default": "6"
+ },
+ {
+  "name": "INLSM",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Lyman RK-Kolev smoothing delimiter",
+  "default": "N"
+ },
+ {
+  "name": "INPAIR",
+  "notes": "*2, *77",
+  "length": "[2\\timesNT]",
+  "codes": "B, 2",
+  "mode": "int",
+  "description": "list of transition indices",
+  "default": null
+ },
+ {
+  "name": "INRHO",
+  "notes": null,
+  "length": null,
+  "codes": "D, 4",
+  "mode": "int",
+  "description": "input-RHO use switch",
+  "default": null
+ },
+ {
+  "name": "IOMX",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "number of overall iterations",
+  "default": "1"
+ },
+ {
+  "name": "IONSTAGE",
+  "notes": "*93",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "stage of ionization of the ion of the run",
+  "default": "1"
+ },
+ {
+  "name": "IORIC",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "line-center depths-of-formation print switch",
+  "default": "1"
+ },
+ {
+  "name": "IPDEE",
+  "notes": "*125",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "d-coefficients printout switch, diffusion calculation",
+  "default": null
+ },
+ {
+  "name": "IPDIJ",
+  "notes": "*127",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "DIJ printout switch, diffusion analysis",
+  "default": null
+ },
+ {
+  "name": "IPERFA",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "performance data archive record switch",
+  "default": "1"
+ },
+ {
+  "name": "IPEX",
+  "notes": "*113",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "switch for extra debug output",
+  "default": null
+ },
+ {
+  "name": "IPIJG",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "fudge GNV in the equation for PIJ",
+  "default": "1"
+ },
+ {
+  "name": "IPPOD",
+  "notes": "*52",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "`population ion' absorption/emission calculation dump switch",
+  "default": null
+ },
+ {
+  "name": "IPR01",
+  "notes": "*59",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Line Source Function debug printout limiting index",
+  "default": "1"
+ },
+ {
+  "name": "IPR02",
+  "notes": "*59",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Line Source Function debug printout limiting index",
+  "default": "5"
+ },
+ {
+  "name": "IPR03",
+  "notes": "*59",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Line Source Function debug printout limiting index",
+  "default": "10"
+ },
+ {
+  "name": "IPR04",
+  "notes": "*59",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Line Source Function debug printout limiting index",
+  "default": "15"
+ },
+ {
+  "name": "IPRDD",
+  "notes": "*30",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "depth interval for PRD printout",
+  "default": "1"
+ },
+ {
+  "name": "IPRDF",
+  "notes": "*30",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "frequency printout for PRD printout",
+  "default": "1"
+ },
+ {
+  "name": "IPZER",
+  "notes": "*71",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "dump printout selector for subroutine DIVIDE",
+  "default": null
+ },
+ {
+  "name": "IRATE",
+  "notes": "*100",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "depth index for `minimal' rates printout",
+  "default": null
+ },
+ {
+  "name": "IRFNC",
+  "notes": "*111",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "depth index of reference value of charged particle number density for printed sample values of Hydrogen CE and CI",
+  "default": "i such that TE_i ``equals\" the middle value of TER, where i is the smallest such value"
+ },
+ {
+  "name": "IRKCOMP",
+  "notes": "*45",
+  "length": "[NSL]",
+  "codes": "D, 2",
+  "mode": "int",
+  "description": "RK-components compute switches",
+  "default": "all =1"
+ },
+ {
+  "name": "IRLCOMP",
+  "notes": "*45",
+  "length": "[NSL]",
+  "codes": "D, 2",
+  "mode": "int",
+  "description": "RL-components compute switches",
+  "default": "all =1"
+ },
+ {
+  "name": "IRLSN",
+  "notes": "*39",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "RL integration methods switch",
+  "default": "1"
+ },
+ {
+  "name": "IRLS1",
+  "notes": "*39",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "RL integration methods switch",
+  "default": "1"
+ },
+ {
+  "name": "IRPUN",
+  "notes": "*84",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "RABD calculation data output switch",
+  "default": "1"
+ },
+ {
+  "name": "IRTIS",
+  "notes": "*63",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "incident radiation table interpolation selector",
+  "default": "2"
+ },
+ {
+  "name": "IRUNT",
+  "notes": "*74, *84",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "run type switch",
+  "default": null
+ },
+ {
+  "name": "ISCOMP",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "line source functions comparison printout details switch",
+  "default": null
+ },
+ {
+  "name": "ISCRS",
+  "notes": "*20, *84",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "scratch I/O mode switch",
+  "default": null
+ },
+ {
+  "name": "ISRCD",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "index of shell ray for Continuum Source Function debug printout",
+  "default": "1"
+ },
+ {
+  "name": "ISMBD",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "intensity integration (SIMBA) dump interval",
+  "default": null
+ },
+ {
+  "name": "ISMSW",
+  "notes": "*99",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "iteration summaries format switch",
+  "default": null
+ },
+ {
+  "name": "ISMVE",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "small-values editing switch",
+  "default": "1"
+ },
+ {
+  "name": "ISNDD",
+  "notes": "*121",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "S(n) calculation dump switch",
+  "default": null
+ },
+ {
+  "name": "ISNUD",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "PRD SNU-shift debug dump switch",
+  "default": null
+ },
+ {
+  "name": "ISOD",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "depth index for Sobolev integration dump",
+  "default": null
+ },
+ {
+  "name": "ISSV",
+  "notes": "*55",
+  "length": "[NVX]",
+  "codes": "F, 2",
+  "mode": "int",
+  "description": "shock velocity depth indices",
+  "default": null
+ },
+ {
+  "name": "ISTARK",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "default value of NE-index for Stark splitting of Hydrogen lines",
+  "default": "largest index where NE \\approx 10^12"
+ },
+ {
+  "name": "ISUB",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "number of sub-iterations (= RHO-iterations)",
+  "default": "1"
+ },
+ {
+  "name": "ITKZA",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Z-augmentation (diffusion) iteration limit",
+  "default": "1"
+ },
+ {
+  "name": "ITN1R",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "``Special N1'' iterations limit (diffusion calculations)",
+  "default": "10"
+ },
+ {
+  "name": "ITPRD",
+  "notes": "*42",
+  "length": null,
+  "codes": "D, 1,",
+  "mode": "int",
+  "description": "PRD-iterations limit",
+  "default": "4"
+ },
+ {
+  "name": "ITRFI",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "TR-iteration debug output control",
+  "default": null
+ },
+ {
+  "name": "IVOIT",
+  "notes": "*50",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Voigt profile methods selector",
+  "default": "1"
+ },
+ {
+  "name": "IWEIT",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "weighting details print switch",
+  "default": null
+ },
+ {
+  "name": "IWSMD",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "WAVELENGTHS summary Part-2 switch",
+  "default": null
+ },
+ {
+  "name": "IXASM",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "smoothing dump (IPEX=25) detail control index",
+  "default": null
+ },
+ {
+  "name": "IXNCS",
+  "notes": "*111",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "switch controlling calculation of on-the-fly Hydrogen CE and CI values",
+  "default": null
+ },
+ {
+  "name": "IXSTA",
+  "notes": "*84",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "performance statistics printout control",
+  "default": "1"
+ },
+ {
+  "name": "IZOPT",
+  "notes": "*38",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "graph Z-scale (axis) option",
+  "default": "1"
+ },
+ {
+  "name": "I4DEQ",
+  "notes": "*122",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "four-diagonal method (``Special N1''), equation selector",
+  "default": null
+ },
+ {
+  "name": "I4DFM",
+  "notes": "*122",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "four-diagonal method (``Special N1''), version selector",
+  "default": "1"
+ },
+ {
+  "name": "I4DIO",
+  "notes": "*122",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "four-diagonal method (``Special N1''), flow direction specifier",
+  "default": "1"
+ },
+ {
+  "name": "JATAW",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "write values of WRAT and RRCP as part of atomic data defaults output",
+  "default": null
+ },
+ {
+  "name": "JBAR",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 5*,5",
+  "mode": "float",
+  "description": "mean intensity",
+  "default": null
+ },
+ {
+  "name": "JBDNC",
+  "notes": "*84",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Rho and b-ratio calculation bypass switch",
+  "default": null
+ },
+ {
+  "name": "JBFSW",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "b calculation method selector for supplementary levels",
+  "default": "1"
+ },
+ {
+  "name": "JDMCE",
+  "notes": "*115",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "debug dump switch for default calculation of Hydrogen CE values",
+  "default": null
+ },
+ {
+  "name": "JDMCI",
+  "notes": "*115",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "debug dump switch for default calculation of Hydrogen CI values",
+  "default": null
+ },
+ {
+  "name": "JEDIT",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "depth index for N-editing",
+  "default": "N/2"
+ },
+ {
+  "name": "JHBFD",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "debug dump switch for H-bf background absorption and emission",
+  "default": null
+ },
+ {
+  "name": "JHEAS",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "secret HEABD switch",
+  "default": null
+ },
+ {
+  "name": "JHLSK",
+  "notes": "*137",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Stark broadening in H Lyman lines background opacity",
+  "default": "1"
+ },
+ {
+  "name": "JH1",
+  "notes": "*102",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "photoionization rates multiplier index",
+  "default": null
+ },
+ {
+  "name": "JH2",
+  "notes": "*102",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "photoionization rates multiplier index",
+  "default": null
+ },
+ {
+  "name": "JM",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "lenght of LMM",
+  "default": "1"
+ },
+ {
+  "name": "JNEDP",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "N-editing dump switch",
+  "default": null
+ },
+ {
+  "name": "JNUNC",
+  "notes": "*46",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "JNU input switch",
+  "default": null
+ },
+ {
+  "name": "JSFEX",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "LSF-solution-explanation print switch",
+  "default": "1"
+ },
+ {
+  "name": "JSSV",
+  "notes": "* 55",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "shock temperature depth index",
+  "default": null
+ },
+ {
+  "name": "JSTCN",
+  "notes": "*5, *6, *11",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Continuum-only run type selector",
+  "default": null
+ },
+ {
+  "name": "JSTIN",
+  "notes": "*6, *40, *84",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "input-check only switch",
+  "default": null
+ },
+ {
+  "name": "JZATMO",
+  "notes": "*133",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "zero-print mode switch for ATMOSPHERE",
+  "default": null
+ },
+ {
+  "name": "JZATOM",
+  "notes": "*133",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "zero-print mode switch for ATOM",
+  "default": null
+ },
+ {
+  "name": "JZOPT",
+  "notes": "*38",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "graph Z-scale (axis) option",
+  "default": null
+ },
+ {
+  "name": "K",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "= KS",
+  "default": null
+ },
+ {
+  "name": "KALHD",
+  "notes": "*73",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "str",
+  "description": "Hi/Bye/Abort-system control parameter",
+  "default": "`` '' (\\ie blank)"
+ },
+ {
+  "name": "KALOR",
+  "notes": "*73",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "Hi/Bye/Abort-system control parameter",
+  "default": "1"
+ },
+ {
+  "name": "KANTNU",
+  "notes": "*129",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "TNU-analysis switch",
+  "default": null
+ },
+ {
+  "name": "KAPDB",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "continuum contributors control debug switch",
+  "default": null
+ },
+ {
+  "name": "KARB",
+  "notes": "*75",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "`print character' selector for `banner' page",
+  "default": "1"
+ },
+ {
+  "name": "KB",
+  "notes": "*66",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of XIBLU",
+  "default": "KS"
+ },
+ {
+  "name": "KBNDS",
+  "notes": "*122",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "boundary condition switch for diffusion (``Special N1'')",
+  "default": "1"
+ },
+ {
+  "name": "KBT",
+  "notes": "*66",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "int",
+  "description": "length of XIBLUT",
+  "default": "KST"
+ },
+ {
+  "name": "KBTMAX",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "maximum of the various values of KBT occurring in Part D",
+  "default": null
+ },
+ {
+  "name": "KBX",
+  "notes": "*66",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of BXI",
+  "default": "25"
+ },
+ {
+  "name": "KB1WA",
+  "notes": "*128",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "B1-weights depth index",
+  "default": null
+ },
+ {
+  "name": "KB1WB",
+  "notes": "*128",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "B1-weights depth index",
+  "default": null
+ },
+ {
+  "name": "KB1WS",
+  "notes": "*128",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "B1-weights type selection switch",
+  "default": "2"
+ },
+ {
+  "name": "KCOAA",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "switch of short form of Composite Line Analysis output",
+  "default": null
+ },
+ {
+  "name": "KDAMP",
+  "notes": "*122",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "matrix solution damping switch for ``Special N1'' (diffusion)",
+  "default": null
+ },
+ {
+  "name": "KDIAG",
+  "notes": "*122",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "diagonal method selector for diffusion (``Special N1'')",
+  "default": "3"
+ },
+ {
+  "name": "KDIFD1",
+  "notes": "*119",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "method switch for derivatives in diffusion calculations",
+  "default": "-1"
+ },
+ {
+  "name": "KDIFGA",
+  "notes": "*124",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "GNV-fudging depth index",
+  "default": "-1"
+ },
+ {
+  "name": "KDIFGB",
+  "notes": "*124",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "GNV-fudging depth index",
+  "default": "-1"
+ },
+ {
+  "name": "KDIFGS",
+  "notes": "*124",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "GNV-fudging switch",
+  "default": null
+ },
+ {
+  "name": "KDRDP",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "frequency index for option DRDMP",
+  "default": "K/2"
+ },
+ {
+  "name": "KDUST",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "dust constant",
+  "default": null
+ },
+ {
+  "name": "KHFFS",
+  "notes": "*41",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "H free-free contribution to Total Hydrogen cooling",
+  "default": "1"
+ },
+ {
+  "name": "KININT",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "plot index selection increment for Line Background opacities (see Section 9)",
+  "default": "5"
+ },
+ {
+  "name": "KINMAX",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "plot index for Line Background opacities (see Section 9)",
+  "default": "index of depth near the minimum of TE"
+ },
+ {
+  "name": "KK",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of XK",
+  "default": "MR(KOLEV)"
+ },
+ {
+  "name": "KKPR",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "frequency index for detailed Lyman printout",
+  "default": "KK"
+ },
+ {
+  "name": "KLDIN",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Lyman dump depth interval",
+  "default": null
+ },
+ {
+  "name": "KLFIN",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Lyman dump frequency interval",
+  "default": null
+ },
+ {
+  "name": "KMMAX",
+  "notes": "*66",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "maximum XIFUL length",
+  "default": null
+ },
+ {
+  "name": "KODNT",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Composite Line Opacity raw data dump interval (see Section 9)",
+  "default": null
+ },
+ {
+  "name": "KOELS",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "every-line switch for ORIGIN printout",
+  "default": "1"
+ },
+ {
+  "name": "KOLEV",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "level index (i.e. \\cal N) for `Level-\\cal N-to-Continuum' transfer calculation",
+  "default": "1"
+ },
+ {
+  "name": "KONFORM",
+  "notes": "*12",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "detail contributions printout format selector",
+  "default": "2"
+ },
+ {
+  "name": "KOOLSUM",
+  "notes": "*41",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "control for components added into Total Cooling Rate for Hydrogen runs",
+  "default": null
+ },
+ {
+  "name": "KPC",
+  "notes": "*10",
+  "length": "[N]",
+  "codes": "D, 5*,5",
+  "mode": "float",
+  "description": "continuous opacity",
+  "default": "KPC^u,\\ell = KPC^MS,NS \\times KPCR^u,\\ell, for u \\neq MS, \\ell \\neq NS"
+ },
+ {
+  "name": "KPCR",
+  "notes": null,
+  "length": null,
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "ratio of the continuous opacity with respect to that of transition (MS,NS)",
+  "default": null
+ },
+ {
+  "name": "KR",
+  "notes": "*66",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of XIRED",
+  "default": "KS"
+ },
+ {
+  "name": "KRATE",
+  "notes": "*118",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "int",
+  "description": "single-vs.-net rate switch for transition terms",
+  "default": "1"
+ },
+ {
+  "name": "KRT",
+  "notes": "*66",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "int",
+  "description": "length of XIREDT",
+  "default": "KST"
+ },
+ {
+  "name": "KRTMAX",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "maximum of the various values of KRT occurring in Part D",
+  "default": null
+ },
+ {
+  "name": "KS",
+  "notes": "*66",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of XISYM",
+  "default": "24"
+ },
+ {
+  "name": "KST",
+  "notes": "*66",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "int",
+  "description": "length of XISYMT",
+  "default": "KS"
+ },
+ {
+  "name": "KSTMAX",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "maximum of the various values of KST occurring in Part D",
+  "default": null
+ },
+ {
+  "name": "KTRANS",
+  "notes": "*33",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "str",
+  "description": "transition descriptor",
+  "default": "``RADIATIVE''"
+ },
+ {
+  "name": "KUDNT",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Statistical Line Opacity raw data dump interval (see Section 9)",
+  "default": null
+ },
+ {
+  "name": "KURIN",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "step selection index for Statistical Line Opacity data (see Section 9)",
+  "default": null
+ },
+ {
+  "name": "KURMA",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "long-wavelength cutoff for Statistical Line Opacity data (see Section 9)",
+  "default": "9000.0"
+ },
+ {
+  "name": "KURMI",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "short-wavelength cutoff for Statistical Line Opacity data (see Section 9)",
+  "default": "1682.0"
+ },
+ {
+  "name": "KXLYM",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "XK-table augmentation switch",
+  "default": null
+ },
+ {
+  "name": "L",
+  "notes": "*24",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of MU",
+  "default": "LF"
+ },
+ {
+  "name": "LCEX",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "charge exchange index",
+  "default": "1"
+ },
+ {
+  "name": "LCH",
+  "notes": "*136",
+  "length": "[NSL]",
+  "codes": "D, 2",
+  "mode": "int",
+  "description": "collisions-with-Hydrogen codes",
+  "default": null
+ },
+ {
+  "name": "LCOA",
+  "notes": null,
+  "length": "[NCB]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "CO-lines opacity wavelength band lower limit",
+  "default": null
+ },
+ {
+  "name": "LCOB",
+  "notes": null,
+  "length": "[NCB]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "CO-lines opacity wavelength band upper limit",
+  "default": null
+ },
+ {
+  "name": "LCOD",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "CO-lines opacity dump printout wavelength",
+  "default": null
+ },
+ {
+  "name": "LCR",
+  "notes": null,
+  "length": "[LCR]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "wavelengths at which incident coronal radiation is specified",
+  "default": null
+ },
+ {
+  "name": "LDFD1",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "smoothing control switch for computed derivatives",
+  "default": null
+ },
+ {
+  "name": "LDINT",
+  "notes": "*54",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "depth increment for detailed printout of transition terms",
+  "default": "5"
+ },
+ {
+  "name": "LDL",
+  "notes": "*77, *105",
+  "length": null,
+  "codes": "D, 3",
+  "mode": "int",
+  "description": "length of DDL",
+  "default": "1"
+ },
+ {
+  "name": "LDLMAX",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "maximum of the various values of LDL occurring in Part D",
+  "default": "1"
+ },
+ {
+  "name": "LDT",
+  "notes": null,
+  "length": "[NDT]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "wavelengths tables for Type-2 dust opacity calculation",
+  "default": "(910.0, 952.0, 1000.0, 1050.0, 1110.0, 1180.0, 1250.0, 1330.0, 1430.0, 1540.0, 1670.0, 1820.0, 2000.0, 2080.0, 2170.0, 2270.0, 2380.0, 2500.0, 3330.0, 5000.0, 1.0\\pa, 3.0\\pa, 1.0\\pb, 3.0\\pb, 1.0\\pc, 3.0\\pc, 1.0\\pd, 3.0\\pd, 1.0\\pe)"
+ },
+ {
+  "name": "LDTYP",
+  "notes": "*54",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "type control for detailed printout of transition terms",
+  "default": "1"
+ },
+ {
+  "name": "LDU",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of LMDUST",
+  "default": "1"
+ },
+ {
+  "name": "LEEDS",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "He-I background lines opacity calculation debug switch",
+  "default": null
+ },
+ {
+  "name": "LEVDES",
+  "notes": "*53",
+  "length": "[NSL]",
+  "codes": "D",
+  "mode": null,
+  "description": "level designation (term designation)",
+  "default": null
+ },
+ {
+  "name": "LF",
+  "notes": "*17, *24",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of MUF",
+  "default": "2"
+ },
+ {
+  "name": "LFLUX",
+  "notes": "*72",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Line Flux Distribution calculation control switch",
+  "default": null
+ },
+ {
+  "name": "LG",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of XMU",
+  "default": "8"
+ },
+ {
+  "name": "LHEDS",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "He-II background lines opacity calculation debug switch",
+  "default": null
+ },
+ {
+  "name": "LHHSE",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "reference depth index for H and M in HSE",
+  "default": null
+ },
+ {
+  "name": "LHM",
+  "notes": null,
+  "length": "[MHM]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "wavelengths for H-minus continuum calculations",
+  "default": "(16300.0, 16200.0, 16000.0, 15500.0, 15000.0, 14500.0, 14000.0, 13500.0, 13000.0, 12500.0, 12000.0, 11500.0, 11000.0, 10500.0, 10000.0, 9500.0, 9000.0, 8500.0, 8000.0, 7500.0, 7000.0, 6500.0, 6000.0, 5500.0, 5000.0, 4500.0, 4000.0, 3500.0, 3000.0, 2500.0, 2000.0, 1750.0, 1500.0, 1250.0)"
+ },
+ {
+  "name": "LLY",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of LMXX",
+  "default": null
+ },
+ {
+  "name": "LMA",
+  "notes": "*104",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Lyman EP-1 edit parameter",
+  "default": "0.3"
+ },
+ {
+  "name": "LMB",
+  "notes": "*104",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Lyman EP-1 edit parameter",
+  "default": "10^4"
+ },
+ {
+  "name": "LMCR",
+  "notes": "*137",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Hydrogen Lyman lines background opacity parameter",
+  "default": "85.0"
+ },
+ {
+  "name": "LMDL2",
+  "notes": "*137",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "DR parameter, Hydrogen Lyman lines background opacity",
+  "default": "0.01"
+ },
+ {
+  "name": "LMDL3",
+  "notes": "*137",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "DR parameter, Hydrogen Lyman lines background opacity",
+  "default": "0.01"
+ },
+ {
+  "name": "LMDR",
+  "notes": "*137",
+  "length": "[LLY]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "DR parameter, Hydrogen Lyman lines background opacity",
+  "default": null
+ },
+ {
+  "name": "LMDUST",
+  "notes": null,
+  "length": "[LDU]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "wavelengths table for Type-1 dust opacity data",
+  "default": "5000.0"
+ },
+ {
+  "name": "LME",
+  "notes": "*104",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Lyman EP-1 edit parameter",
+  "default": "10^-4"
+ },
+ {
+  "name": "LMF",
+  "notes": "*104",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Lyman EP-1 edit parameter",
+  "default": "10^-5"
+ },
+ {
+  "name": "LMH",
+  "notes": "*137",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "wavelength cutoff for highest H Lyman lines background opacity",
+  "default": "950."
+ },
+ {
+  "name": "LMM",
+  "notes": null,
+  "length": "[JM]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "wavelengths table for opacity multiplier",
+  "default": "1682.0"
+ },
+ {
+  "name": "LMR",
+  "notes": "*104",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Lyman EP-1 edit parameter",
+  "default": "10^4"
+ },
+ {
+  "name": "LMT",
+  "notes": "*104",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Lyman EP-1 edit parameter",
+  "default": "0.3"
+ },
+ {
+  "name": "LMXC",
+  "notes": "*137",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "DR parameter, Hydrogen Lyman lines background opacity",
+  "default": "2.0"
+ },
+ {
+  "name": "LMXP",
+  "notes": "*137",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "DR parameter, Hydrogen Lyman lines background opacity",
+  "default": "3.0"
+ },
+ {
+  "name": "LMXX",
+  "notes": "*137",
+  "length": "[LLY]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "DR parameter, Hydrogen Lyman lines background opacity",
+  "default": null
+ },
+ {
+  "name": "LMZ",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Lyman alpha wing background opacity cut-off wavelength",
+  "default": "2500.0"
+ },
+ {
+  "name": "LN",
+  "notes": "*67",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "depth index limit for saturation approximation in ``Lyman'' calculation",
+  "default": "8"
+ },
+ {
+  "name": "LODCG",
+  "notes": "*88",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "depth index for diffusion calculation graphs",
+  "default": "-1"
+ },
+ {
+  "name": "LOGAS",
+  "notes": "*114",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "location analysis graph switch",
+  "default": null
+ },
+ {
+  "name": "LOXDS",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "O-I background lines opacity calculation debug switch",
+  "default": null
+ },
+ {
+  "name": "LPMLR",
+  "notes": null,
+  "length": null,
+  "codes": "F, 1",
+  "mode": "int",
+  "description": "mass-loss-rates print switch (used with LPVEL)",
+  "default": "1"
+ },
+ {
+  "name": "LPVEL",
+  "notes": null,
+  "length": null,
+  "codes": "F, 1",
+  "mode": "int",
+  "description": "profile-velocities print switch",
+  "default": "1"
+ },
+ {
+  "name": "LR",
+  "notes": "*77",
+  "length": "[NL]",
+  "codes": "B, 2",
+  "mode": "int",
+  "description": "number of RKC values (one LR for each level)",
+  "default": null
+ },
+ {
+  "name": "LSFBOC",
+  "notes": "*16",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "int",
+  "description": "Line Source Function background opacity control",
+  "default": null
+ },
+ {
+  "name": "LSFFDB",
+  "notes": "*36",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "int",
+  "description": "Line Source Function background type selector",
+  "default": null
+ },
+ {
+  "name": "LSFGC",
+  "notes": "*68",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Line Source Function graph control code",
+  "default": "1"
+ },
+ {
+  "name": "LSFPRINT",
+  "notes": "*81",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "int",
+  "description": "Line Source Function printout switch",
+  "default": null
+ },
+ {
+  "name": "LSTMP",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1.",
+  "mode": "int",
+  "description": "STIM-for-GTN details print switch",
+  "default": null
+ },
+ {
+  "name": "LSFTYP",
+  "notes": "*48",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "int",
+  "description": "Line Source Function solution method selector",
+  "default": null
+ },
+ {
+  "name": "LWNT",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "`Line Opacity' printout wavelengths interval (see Section 9)",
+  "default": "1"
+ },
+ {
+  "name": "LX2DS",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "O-II background lines opacity calculation debug switch",
+  "default": null
+ },
+ {
+  "name": "LX3DS",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "O-III background lines opacity calculation debug switch",
+  "default": null
+ },
+ {
+  "name": "LYMITER",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "number of Lyman iterations",
+  "default": "1"
+ },
+ {
+  "name": "LYODS",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "H Lyman background lines opacity calculation debug switch",
+  "default": null
+ },
+ {
+  "name": "LZA",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1*",
+  "mode": "int",
+  "description": "length of ZAUX",
+  "default": null
+ },
+ {
+  "name": "M",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of TS",
+  "default": "33"
+ },
+ {
+  "name": "MAMAS",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "matrix elements magnitude scan switch",
+  "default": "1"
+ },
+ {
+  "name": "MASS",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "atomic mass",
+  "default": null
+ },
+ {
+  "name": "MATRIX",
+  "notes": "*140",
+  "length": null,
+  "codes": "D",
+  "mode": null,
+  "description": "matrix manipulation control data",
+  "default": null
+ },
+ {
+  "name": "MAUX",
+  "notes": null,
+  "length": null,
+  "codes": "D,F,H, 1",
+  "mode": "int",
+  "description": "index specifying a ZAUX table",
+  "default": null
+ },
+ {
+  "name": "MCE",
+  "notes": null,
+  "length": "[NSL]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "CE (default) multiplier",
+  "default": "1.0"
+ },
+ {
+  "name": "MCI",
+  "notes": null,
+  "length": "[NSL]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "CI (default) multiplier",
+  "default": "1.0"
+ },
+ {
+  "name": "MCOA",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "mulitplier of van der Waals damping for CO-lines profiles",
+  "default": "all = 1.0"
+ },
+ {
+  "name": "MCON",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "CO number density output switch",
+  "default": null
+ },
+ {
+  "name": "MDFG",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "diffusion terms (GVL) output switch",
+  "default": "1"
+ },
+ {
+  "name": "MDFV",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "diffusion velocities output switch",
+  "default": "1"
+ },
+ {
+  "name": "MDTR1",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Type-2 dust opacity calculation iteration limit",
+  "default": "10"
+ },
+ {
+  "name": "MDTR2",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Type-2 dust opacity calculation iteration limit",
+  "default": "20"
+ },
+ {
+  "name": "METEP",
+  "notes": "*21",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Lyman EP-1 and EP-2 calculation methods selector",
+  "default": "3"
+ },
+ {
+  "name": "METSE",
+  "notes": "*35",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "int",
+  "description": "Statistical Equilibrium equations calculation methods selector",
+  "default": "METSEDG or METSEDW"
+ },
+ {
+  "name": "METSEDG",
+  "notes": "*35",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "general default value of METSE",
+  "default": "1"
+ },
+ {
+  "name": "METSEDW",
+  "notes": "*35",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "default value of METSE for transitions down to Level 1",
+  "default": "3"
+ },
+ {
+  "name": "MFONT",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Fontenla atmosphere data output switch",
+  "default": "1"
+ },
+ {
+  "name": "MGK",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 2*,2",
+  "mode": "float",
+  "description": "singly-ionized Magnesium number density",
+  "default": "computed in LTE"
+ },
+ {
+  "name": "MGN",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "Magnesium-I level populations",
+  "default": "MGN_ij computed in LTE, for all levels j such that j > NMG"
+ },
+ {
+  "name": "MHM",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of LHM",
+  "default": "34"
+ },
+ {
+  "name": "MH2N",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "H2 number density output switch",
+  "default": null
+ },
+ {
+  "name": "MKURU",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Kurucz spectrum data output switch",
+  "default": "1"
+ },
+ {
+  "name": "MLC",
+  "notes": null,
+  "length": "[JM]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "opacity multiplier",
+  "default": "1.0"
+ },
+ {
+  "name": "MN1",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "depth limit for N1 recalculation in the ambipolar diffusion calculation",
+  "default": "N"
+ },
+ {
+  "name": "MNG1",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "depth limit for GNV-1 replacement in the ambipolar diffusion calculation",
+  "default": "-MN1"
+ },
+ {
+  "name": "MODLAB",
+  "notes": "*37",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "str",
+  "description": "name of atmospheric model",
+  "default": "``!NONAME!''"
+ },
+ {
+  "name": "MOPRNT",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "switch to print built-in population-ion models",
+  "default": "1"
+ },
+ {
+  "name": "MQT",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of QTAIL",
+  "default": "3"
+ },
+ {
+  "name": "MR",
+  "notes": "*29, *77",
+  "length": "[NSL]",
+  "codes": "B, 2",
+  "mode": "int",
+  "description": "number of WRAT values (one MR for each level)",
+  "default": null
+ },
+ {
+  "name": "MRR",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of FRR",
+  "default": "6"
+ },
+ {
+  "name": "MS",
+  "notes": "*2, *59",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "index of upper level of `reference transition'",
+  "default": "from INPAIR; see Note *2"
+ },
+ {
+  "name": "MSKIP",
+  "notes": "*62",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "ray selection parameter for computing weight matrices in spherical coordinates",
+  "default": null
+ },
+ {
+  "name": "MSSPR",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "print switch for matrix of simultaneous ``Special N1'' solution (diffusion)",
+  "default": "1"
+ },
+ {
+  "name": "MTHEI",
+  "notes": "*83",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "exponential integral method selector",
+  "default": "1"
+ },
+ {
+  "name": "MTREF",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "TR-effective output switch",
+  "default": null
+ },
+ {
+  "name": "MU",
+  "notes": "*24",
+  "length": "[L]",
+  "codes": "F, 2",
+  "mode": "float",
+  "description": "cosine-of-lookangle values for emergent intensity calculation",
+  "default": "MUF"
+ },
+ {
+  "name": "MUF",
+  "notes": "*24",
+  "length": "[LF]",
+  "codes": "F, 2",
+  "mode": "float",
+  "description": "cosine-of-lookangle values for emergent flux calculation",
+  "default": "(1.0, 0.3)"
+ },
+ {
+  "name": "MXPPI",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "limit for individual KZAUG values (Z-augmentation, diffusion)",
+  "default": "5"
+ },
+ {
+  "name": "MXTAP",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "limit for sum of KZAUG values (Z-augmentation, diffusion)",
+  "default": "100"
+ },
+ {
+  "name": "M304",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "index of reference value of He-II \\lambda 304 line mean intensity",
+  "default": "10"
+ },
+ {
+  "name": "N",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of Z",
+  "default": null
+ },
+ {
+  "name": "NAB",
+  "notes": "*77",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of BANDL (see Section 9)",
+  "default": null
+ },
+ {
+  "name": "NABS",
+  "notes": "*7",
+  "length": "[37]",
+  "codes": "D, 2",
+  "mode": "int",
+  "description": "absorber/emitter switches",
+  "default": "NABS_i = on, for all i"
+ },
+ {
+  "name": "NAK",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 2*,2",
+  "mode": "float",
+  "description": "singly-ionized Sodium number density",
+  "default": "computed in LTE"
+ },
+ {
+  "name": "NAL",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "number of levels for which Aluminum populations are specified",
+  "default": null
+ },
+ {
+  "name": "NAME",
+  "notes": "*3",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "str",
+  "description": "name of ion of run",
+  "default": null
+ },
+ {
+  "name": "NAN",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "Sodium-I level populations",
+  "default": "NAN_ij computed in LTE, for all levels j such that j > NNA"
+ },
+ {
+  "name": "NANAL1",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "profile ANALYSIS depth selection parameter",
+  "default": "1"
+ },
+ {
+  "name": "NANAL2",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "profile ANALYSIS depth selection parameter",
+  "default": "5"
+ },
+ {
+  "name": "NAPKNT",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "recombination parameter",
+  "default": null
+ },
+ {
+  "name": "NAPWRA",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "recombination parameter",
+  "default": "1"
+ },
+ {
+  "name": "NAPWRB",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "recombination parameter",
+  "default": "2"
+ },
+ {
+  "name": "NARB",
+  "notes": "*75",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "number of `banner' pages",
+  "default": null
+ },
+ {
+  "name": "NBS",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "b-smoothing control (level) index",
+  "default": "2"
+ },
+ {
+  "name": "NC",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 2*,2",
+  "mode": "float",
+  "description": "charged particle number density",
+  "default": null
+ },
+ {
+  "name": "NCA",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "number of levels for which Calcium populations are specified",
+  "default": null
+ },
+ {
+  "name": "NCB",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of LCOA, LCOB",
+  "default": null
+ },
+ {
+  "name": "NCL",
+  "notes": "*29, *109",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of XCOL",
+  "default": "5"
+ },
+ {
+  "name": "NCOI",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "CO number density, input (to replace computed values)",
+  "default": null
+ },
+ {
+  "name": "NCOPT",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "CO-lines opacity calculations statistics-keeping switch",
+  "default": null
+ },
+ {
+  "name": "NCOSW",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Carbon Monoxide abundance correction computation method selector",
+  "default": "1"
+ },
+ {
+  "name": "NCQ",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of CQT",
+  "default": "5"
+ },
+ {
+  "name": "NCR",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of LCR",
+  "default": null
+ },
+ {
+  "name": "ND",
+  "notes": "*32",
+  "length": "[N]",
+  "codes": "D, 3*,3",
+  "mode": "float",
+  "description": "number densities of the levels of the ion of the run",
+  "default": "computed in LTE"
+ },
+ {
+  "name": "NDR",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of XDR",
+  "default": "7"
+ },
+ {
+  "name": "NDSN1",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "skip Special N-1 recalculation in first overall calculation",
+  "default": null
+ },
+ {
+  "name": "NDT",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of LDT",
+  "default": "29"
+ },
+ {
+  "name": "NDV",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of DWAVE",
+  "default": null
+ },
+ {
+  "name": "NDW",
+  "notes": "*86",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "depth index for reference value of DW (Doppler width)",
+  "default": "either index of Z-value closest to ZNDW, or N/2"
+ },
+ {
+  "name": "NDWM",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "depth index for reference value of DW (Doppler width), for atmospheric model",
+  "default": "NDW"
+ },
+ {
+  "name": "NE",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "electron number density",
+  "default": null
+ },
+ {
+  "name": "NECLIP",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "continuum eclipse printout quantity selector",
+  "default": null
+ },
+ {
+  "name": "NED",
+  "notes": null,
+  "length": null,
+  "codes": "D, 4",
+  "mode": "int",
+  "description": "RHO editing index",
+  "default": "N"
+ },
+ {
+  "name": "NEFDF",
+  "notes": "*125",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "int",
+  "description": "switch for NE for d-coefficients in diffusion calculation",
+  "default": "1"
+ },
+ {
+  "name": "NERM",
+  "notes": "*85",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "limit for some error messages from EDITH",
+  "default": "10"
+ },
+ {
+  "name": "NEWELE",
+  "notes": null,
+  "length": null,
+  "codes": "D",
+  "mode": null,
+  "description": "element data (see Section 10)",
+  "default": null
+ },
+ {
+  "name": "NFB",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "number of isotropic flow broadening velocities",
+  "default": "6"
+ },
+ {
+  "name": "NFE",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "number of levels for which Iron populations are specified",
+  "default": null
+ },
+ {
+  "name": "NFH",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of HNDF",
+  "default": "8"
+ },
+ {
+  "name": "NGM",
+  "notes": "*138",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of DGMZ",
+  "default": "23"
+ },
+ {
+  "name": "NGNV",
+  "notes": "*116",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "GNVL-suppression level limit",
+  "default": null
+ },
+ {
+  "name": "NGRL",
+  "notes": "*38",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "graphs Z-scale (axis) limit",
+  "default": null
+ },
+ {
+  "name": "NGRR",
+  "notes": "*38",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "graphs Z-scale (axis) limit",
+  "default": null
+ },
+ {
+  "name": "NH",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "total Hydrogen number density",
+  "default": null
+ },
+ {
+  "name": "NHN",
+  "notes": null,
+  "length": null,
+  "codes": null,
+  "mode": null,
+  "description": "= ``HN 1 ''",
+  "default": null
+ },
+ {
+  "name": "NHTSW",
+  "notes": "*64",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "H2 abundance correction method selector",
+  "default": "2"
+ },
+ {
+  "name": "NIASM",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "sequential smoothing parameter",
+  "default": "20"
+ },
+ {
+  "name": "NIL",
+  "notes": "*19",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "a RHO selection parameter",
+  "default": "2"
+ },
+ {
+  "name": "NK",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 3*,3",
+  "mode": "float",
+  "description": "ionized number density of the ion of the run",
+  "default": "computed in LTE"
+ },
+ {
+  "name": "NKA",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of ZALBK (see Section 9)",
+  "default": "2"
+ },
+ {
+  "name": "NL",
+  "notes": "*29, *77",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "number of levels of the ion of the run",
+  "default": "2"
+ },
+ {
+  "name": "NLC",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "number of levels for which Carbon populations are specified",
+  "default": null
+ },
+ {
+  "name": "NLH",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "number of levels for which Hydrogen populations are specified",
+  "default": null
+ },
+ {
+  "name": "NLO",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "number of levels for which Oxygen populations are specified",
+  "default": null
+ },
+ {
+  "name": "NLPAIR",
+  "notes": "*94, *95",
+  "length": "[2\\timesNL]",
+  "codes": "B, 2",
+  "mode": "int",
+  "description": "list of quantum numbers",
+  "default": null
+ },
+ {
+  "name": "NLS",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "number of levels for which Silicon populations are specified",
+  "default": null
+ },
+ {
+  "name": "NLU",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "number of levels for which Sulphur populations are specified",
+  "default": null
+ },
+ {
+  "name": "NLY",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "H Ly lines background opacity limit",
+  "default": "15"
+ },
+ {
+  "name": "NLZ",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "number of levels for which Helium populations are specified",
+  "default": null
+ },
+ {
+  "name": "NMG",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "number of levels for which Magnesium populations are specified",
+  "default": null
+ },
+ {
+  "name": "NMLR",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "mass-loss-rate index",
+  "default": "NDW"
+ },
+ {
+  "name": "NMT",
+  "notes": "*16, *77",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "number of rows in the table ELE (see Section 10)",
+  "default": "38"
+ },
+ {
+  "name": "NNA",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "number of levels for which Sodium populations are specified",
+  "default": null
+ },
+ {
+  "name": "NNDFE",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "dump control for injection function FJIN (fast electrons)",
+  "default": "-1"
+ },
+ {
+  "name": "NODCG",
+  "notes": "*88",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "depth index for diffusion calculation graphs",
+  "default": "-1"
+ },
+ {
+  "name": "NOION",
+  "notes": "*11, *84",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "`no ion' switch",
+  "default": null
+ },
+ {
+  "name": "NO2",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "number of levels for which Oxygen-II populations are specified",
+  "default": null
+ },
+ {
+  "name": "NO3",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "number of levels for which Oxygen-III populations are specified",
+  "default": null
+ },
+ {
+  "name": "NP",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 2*,2",
+  "mode": "float",
+  "description": "proton number density",
+  "default": "computed in LTE"
+ },
+ {
+  "name": "NQLYM",
+  "notes": "*137",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "weight limit for highest H Lyman lines background opacity",
+  "default": null
+ },
+ {
+  "name": "NS",
+  "notes": "*2, *59",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "index of lower level of `reference transition'",
+  "default": "from INPAIR; see Note *2"
+ },
+ {
+  "name": "NSL",
+  "notes": "*29, *77",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "total number of levels of the ion of the run (including supplementary levels)",
+  "default": "NL"
+ },
+ {
+  "name": "NSPED",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "particle energy dissipation calculation parameter ``NS'' (fast electrons)",
+  "default": "1"
+ },
+ {
+  "name": "NSPRD",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "secret PRD switch",
+  "default": null
+ },
+ {
+  "name": "NSW",
+  "notes": "*134",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of SCOW",
+  "default": null
+ },
+ {
+  "name": "NT",
+  "notes": "*29, *77",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "number of transitions specified in INPAIR",
+  "default": null
+ },
+ {
+  "name": "NTAN",
+  "notes": "*62",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "ray selection parameter for computing weight matrices in spherical coordinates",
+  "default": "4"
+ },
+ {
+  "name": "NTE",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of TER",
+  "default": "1"
+ },
+ {
+  "name": "NU",
+  "notes": "*93",
+  "length": "[NSL]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "frequency intervals between levels of the ion of the run, in frequency units (see also WNU)",
+  "default": null
+ },
+ {
+  "name": "NUC",
+  "notes": "*93",
+  "length": "[NSL]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "auxiliary continuum frequency intervals of the ion of the run, in frequency units (see also WNUC)",
+  "default": "NUK"
+ },
+ {
+  "name": "NUK",
+  "notes": "*93",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "continuum frequency interval of the ion of the run, in frequency units (see also WNUK)",
+  "default": null
+ },
+ {
+  "name": "NVDFE",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "dump control for injection function FINJ (fast electrons)",
+  "default": "-1"
+ },
+ {
+  "name": "NVF",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "number of velocity values (fast electrons)",
+  "default": "30"
+ },
+ {
+  "name": "NVH",
+  "notes": "*90",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of HNDV",
+  "default": "38"
+ },
+ {
+  "name": "NVOIT",
+  "notes": "*50, *84",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Voigt profiles subroutine execution statistics printout switch",
+  "default": "1"
+ },
+ {
+  "name": "NVX",
+  "notes": "*29, *82, *108",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "number of VX tables",
+  "default": null
+ },
+ {
+  "name": "NWS",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of DELWAVE",
+  "default": null
+ },
+ {
+  "name": "NWV",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of WAVES",
+  "default": null
+ },
+ {
+  "name": "NXF",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "maximum number of integrand values for injection functions (fast electrons)",
+  "default": "1000"
+ },
+ {
+  "name": "NZDFE",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "dump control (fast electrons)",
+  "default": "-1"
+ },
+ {
+  "name": "NZE",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "length of ZECL",
+  "default": null
+ },
+ {
+  "name": "NZ2",
+  "notes": null,
+  "length": null,
+  "codes": "B, 1",
+  "mode": "int",
+  "description": "number of levels for which Helium-II populations are specified",
+  "default": null
+ },
+ {
+  "name": "N1MET",
+  "notes": "*122",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "``Special N1'' (diffusion calculation), method selector",
+  "default": "2"
+ },
+ {
+  "name": "N1NUP",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "populations-of-the-run update switch, ``Special N1'' calculation",
+  "default": "1"
+ },
+ {
+  "name": "OK",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 2*,2",
+  "mode": "float",
+  "description": "singly-ionized Oxygen number density",
+  "default": "computed in LTE"
+ },
+ {
+  "name": "OLL",
+  "notes": "*18",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "line opacity multiplier",
+  "default": "1.0"
+ },
+ {
+  "name": "OMIT",
+  "notes": null,
+  "length": "[variable]",
+  "codes": "B, 2",
+  "mode": "str",
+  "description": "disable program options (see Section 6 for further details)",
+  "default": null
+ },
+ {
+  "name": "OML",
+  "notes": "*16",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "line-background opacity multiplier",
+  "default": "1.0"
+ },
+ {
+  "name": "ON",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "Oxygen-I level populations",
+  "default": "ON_ij computed in LTE, for all levels j such that j > NLO"
+ },
+ {
+  "name": "OPF",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "incident radiation extinction factor",
+  "default": "1.0"
+ },
+ {
+  "name": "OUTPUT",
+  "notes": "*23",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "str",
+  "description": "`general printout' file scope switch",
+  "default": "``MERGE''"
+ },
+ {
+  "name": "O2K",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 2*,2",
+  "mode": "float",
+  "description": "doubly-ionized Oxygen number density",
+  "default": "computed in LTE"
+ },
+ {
+  "name": "O2N",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "Oxygen-II level populations",
+  "default": "O2N_ij computed in LTE, for all levels j such that j > NO2"
+ },
+ {
+  "name": "O3K",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 2*,2",
+  "mode": "float",
+  "description": "triply-ionized Oxygen number density",
+  "default": "computed in LTE"
+ },
+ {
+  "name": "O3N",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "Oxygen-I level populations",
+  "default": "O3N_ij computed in LTE, for all levels j such that j > NO3"
+ },
+ {
+  "name": "P",
+  "notes": "*93",
+  "length": "[NSL]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "statistical weight",
+  "default": null
+ },
+ {
+  "name": "PALBET",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "Helium diffusion parameter",
+  "default": null
+ },
+ {
+  "name": "PART",
+  "notes": "*61",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "partition function for the ion of the run",
+  "default": null
+ },
+ {
+  "name": "PARTLIM",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "partition functions component limit (for ions in table ELE)",
+  "default": "3.0"
+ },
+ {
+  "name": "PBETAL",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "Helium diffusion parameter",
+  "default": null
+ },
+ {
+  "name": "PBETGM",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "Helium diffusion parameter",
+  "default": null
+ },
+ {
+  "name": "PCE",
+  "notes": null,
+  "length": null,
+  "codes": "D, 5",
+  "mode": "float",
+  "description": "FCE adjustment factors",
+  "default": null
+ },
+ {
+  "name": "PGMBET",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "Helium diffusion parameter",
+  "default": null
+ },
+ {
+  "name": "PMSK",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "multiplier of default Stark half-width",
+  "default": "1.0"
+ },
+ {
+  "name": "PNH",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "scattering albedo parameter for Background Line Opacities (see Section 9)",
+  "default": null
+ },
+ {
+  "name": "POPION",
+  "notes": "*28",
+  "length": null,
+  "codes": "H",
+  "mode": null,
+  "description": "`population update' ion data",
+  "default": null
+ },
+ {
+  "name": "POPRCP",
+  "notes": "*28",
+  "length": null,
+  "codes": "H",
+  "mode": null,
+  "description": "`population update' ion data",
+  "default": null
+ },
+ {
+  "name": "POPUP",
+  "notes": "*8",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "str",
+  "description": "populations data update switch",
+  "default": null
+ },
+ {
+  "name": "POPXLM",
+  "notes": "*28",
+  "length": null,
+  "codes": "H",
+  "mode": null,
+  "description": "`population update' ion data",
+  "default": null
+ },
+ {
+  "name": "PRDCV",
+  "notes": "*42",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "PRD-iterations convergence criterion",
+  "default": "0.1"
+ },
+ {
+  "name": "PROF",
+  "notes": "*17",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "int",
+  "description": "emergent line profiles calculations switch",
+  "default": null
+ },
+ {
+  "name": "PROGLI",
+  "notes": "*98",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "profile graphs control parameter",
+  "default": null
+ },
+ {
+  "name": "PW",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "exponent for Stark broadening term",
+  "default": "1.0"
+ },
+ {
+  "name": "PZERO",
+  "notes": "*103",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Z-from-TAUKIN recalculation parameter",
+  "default": null
+ },
+ {
+  "name": "QIN",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "K-shell ionization calculation data",
+  "default": null
+ },
+ {
+  "name": "QNL",
+  "notes": null,
+  "length": "[NSL]",
+  "codes": "D, 2",
+  "mode": "int",
+  "description": "number of ``n\\ell'' electrons",
+  "default": "all = 1"
+ },
+ {
+  "name": "QTAIL",
+  "notes": null,
+  "length": "[MQT]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "Lyman EP-1 Q-smoothing tail",
+  "default": "(0.5, 0.1, 0.01)"
+ },
+ {
+  "name": "RABD",
+  "notes": "*120",
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "depth variation of abundance ratio",
+  "default": "antilog(RABDL_i), or RABD_i = 1.0, for all i"
+ },
+ {
+  "name": "RABDL",
+  "notes": "*120",
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "depth variation of log of abundance ratio",
+  "default": null
+ },
+ {
+  "name": "RCCFE",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "accuracy criterion for injection function integrations (fast electrons)",
+  "default": "0.1"
+ },
+ {
+  "name": "RCHX",
+  "notes": "*95, *97",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "upper-level charge-exchange parameter",
+  "default": null
+ },
+ {
+  "name": "RCOMIN",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "CO abundance lower limit",
+  "default": "10^-10"
+ },
+ {
+  "name": "REFLM",
+  "notes": "*103",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "wavelength to which TAUKIN values correspond",
+  "default": "911.1236"
+ },
+ {
+  "name": "RFAC",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "reduction factor for all collision rates",
+  "default": "1.0"
+ },
+ {
+  "name": "RFHEAB",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Helium abundance coefficient reduction factor for RHEAB calculation",
+  "default": "1.0"
+ },
+ {
+  "name": "RFMAS",
+  "notes": "*103",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "reference mass",
+  "default": null
+ },
+ {
+  "name": "RHEAB",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "depth dependence of total Helium abundance",
+  "default": "RHEAB_i = 1.0, for all i"
+ },
+ {
+  "name": "RHO",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 5*,5",
+  "mode": "float",
+  "description": "net radiative bracket",
+  "default": null
+ },
+ {
+  "name": "RHOPT",
+  "notes": "*4, *19",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "str",
+  "description": "a RHO selection parameter",
+  "default": "``RHOJ''"
+ },
+ {
+  "name": "RHOWT",
+  "notes": "*13, *131",
+  "length": "[N]",
+  "codes": "D, 5*,5",
+  "mode": "float",
+  "description": "RHO weights",
+  "default": null
+ },
+ {
+  "name": "RHWT",
+  "notes": "*13, *131",
+  "length": "[N]",
+  "codes": "D, 5*,5",
+  "mode": "float",
+  "description": "RHO weights",
+  "default": "1.0"
+ },
+ {
+  "name": "RK",
+  "notes": "*45",
+  "length": "[N]",
+  "codes": "D, 3*,3",
+  "mode": "float",
+  "description": "photoionization rate (for level KOLEV)",
+  "default": null
+ },
+ {
+  "name": "RKC",
+  "notes": null,
+  "length": "[LR]",
+  "codes": "D, 3",
+  "mode": "float",
+  "description": "additional photoionization parameter",
+  "default": null
+ },
+ {
+  "name": "RKMULT",
+  "notes": null,
+  "length": "[NSL]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "RK enhancement factor",
+  "default": null
+ },
+ {
+  "name": "RKW",
+  "notes": "*13, *131",
+  "length": "[N]",
+  "codes": "D, 3*,3",
+  "mode": "float",
+  "description": "RK-KOLEV weights",
+  "default": null
+ },
+ {
+  "name": "RKWT",
+  "notes": "*13, *131",
+  "length": "[N]",
+  "codes": "D, 3*,3",
+  "mode": "float",
+  "description": "RK-KOLEV weights",
+  "default": "1.0"
+ },
+ {
+  "name": "RL",
+  "notes": "*39, *45",
+  "length": "[N]",
+  "codes": "D, 3*,3",
+  "mode": "float",
+  "description": "photorecombination rate (for level KOLEV)",
+  "default": null
+ },
+ {
+  "name": "RQCP",
+  "notes": "*22, *93",
+  "length": "[MR+1]",
+  "codes": "D, 3",
+  "mode": "float",
+  "description": "= RRCP",
+  "default": null
+ },
+ {
+  "name": "RRCP",
+  "notes": "*22, *56",
+  "length": "[MR]",
+  "codes": "D, 3",
+  "mode": "float",
+  "description": "ratios of photoionization cross-sections",
+  "default": "computed for Level 1 for some non-Hydrogen runs"
+ },
+ {
+  "name": "RUNTOPOP",
+  "notes": "*8",
+  "length": "[8]",
+  "codes": "B, 2",
+  "mode": "int",
+  "description": "ion-of-the-run vs. built-in population-ion-model level correspondences, for `population update' runs",
+  "default": null
+ },
+ {
+  "name": "RZM",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "metal electrons multiplier",
+  "default": "RZM_i = 1.0, for all i"
+ },
+ {
+  "name": "R1N",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "distance from illuminating source",
+  "default": null
+ },
+ {
+  "name": "SCH",
+  "notes": "*47",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "int",
+  "description": "partial redistribution calculation selector for Line Source Function calculations",
+  "default": null
+ },
+ {
+  "name": "SCOW",
+  "notes": "*134",
+  "length": "[NSW]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "selected Continuum output wavelengths",
+  "default": null
+ },
+ {
+  "name": "SCTA",
+  "notes": "*55",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "shock temperature amplitude",
+  "default": null
+ },
+ {
+  "name": "SCTS",
+  "notes": "*55",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "shock temperature scale height",
+  "default": null
+ },
+ {
+  "name": "SCVA",
+  "notes": "*55",
+  "length": null,
+  "codes": "F, 1",
+  "mode": "float",
+  "description": "shock velocity amplitude",
+  "default": null
+ },
+ {
+  "name": "SCVB",
+  "notes": "*55",
+  "length": null,
+  "codes": "F, 1",
+  "mode": "float",
+  "description": "shock velocity parameter",
+  "default": null
+ },
+ {
+  "name": "SCVS",
+  "notes": "*55",
+  "length": null,
+  "codes": "F, 1",
+  "mode": "float",
+  "description": "shock velocity scale height",
+  "default": null
+ },
+ {
+  "name": "SGRAF",
+  "notes": "*98",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "int",
+  "description": "profile graphs control parameter",
+  "default": null
+ },
+ {
+  "name": "SHCOC",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "CO chromospheric scale height",
+  "default": "100."
+ },
+ {
+  "name": "SHCOP",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "CO photospheric scale height",
+  "default": "400."
+ },
+ {
+  "name": "SIK",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 2*,2",
+  "mode": "float",
+  "description": "singly-ionized Silicon number density",
+  "default": "computed in LTE"
+ },
+ {
+  "name": "SIN",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "Silicon-I level populations",
+  "default": "SIN_ij computed in LTE, for all levels j such that j > NLS"
+ },
+ {
+  "name": "SK",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 2*,2",
+  "mode": "float",
+  "description": "singly-ionized Sulphur number density",
+  "default": "computed in LTE"
+ },
+ {
+  "name": "SMATC",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "matrix samples output selection criterion",
+  "default": null
+ },
+ {
+  "name": "SMOOTH",
+  "notes": "*49",
+  "length": null,
+  "codes": "D",
+  "mode": null,
+  "description": "RHO smoothing control parameters",
+  "default": "see Note *49"
+ },
+ {
+  "name": "SMP",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "RHO weights adjustment parameter",
+  "default": "0.3"
+ },
+ {
+  "name": "SN",
+  "notes": null,
+  "length": "[N]",
+  "codes": "H, 3*,3",
+  "mode": "float",
+  "description": "Sulphur-I level populations",
+  "default": "SIN_ij computed in LTE, for all levels j such that j > NLU"
+ },
+ {
+  "name": "SN1CC",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "convergence criterion for ``Special N1'' calculation (diffusion)",
+  "default": "10^-8"
+ },
+ {
+  "name": "SOBDMN",
+  "notes": "*51",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Sobolev escape probability calculation integration control parameter",
+  "default": "0.001"
+ },
+ {
+  "name": "SOBDMX",
+  "notes": "*51",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Sobolev escape probability calculation integration control parameter",
+  "default": "0.01"
+ },
+ {
+  "name": "SOBFEQ",
+  "notes": "*51",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Sobolev escape probability calculation integration control parameter",
+  "default": "0.001"
+ },
+ {
+  "name": "SOBOLEV",
+  "notes": "*51, *82",
+  "length": "[2]",
+  "codes": "D, 5",
+  "mode": "int",
+  "description": "Sobolev solution limit indices",
+  "default": "(1, 1)"
+ },
+ {
+  "name": "SRCO",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "scattering ratio for CO lines",
+  "default": "0.1"
+ },
+ {
+  "name": "STARKI",
+  "notes": null,
+  "length": null,
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "value of NE-index for Stark splitting of Hydrogen lines",
+  "default": "ISTARK"
+ },
+ {
+  "name": "TAUCL",
+  "notes": "*42",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "DR parameter, PRD transitions",
+  "default": "10^4"
+ },
+ {
+  "name": "TAUKIN",
+  "notes": "*103",
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "input TAUK values",
+  "default": null
+ },
+ {
+  "name": "TB",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "blanketing temperature",
+  "default": "TE"
+ },
+ {
+  "name": "TBAR",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "change-over TAU-value for weight matrix calculation",
+  "default": "0.5"
+ },
+ {
+  "name": "TDST",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "Type-2 dust opacity calculation temperature values",
+  "default": null
+ },
+ {
+  "name": "TDUST",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Type-1 dust temperature",
+  "default": "200.0"
+ },
+ {
+  "name": "TE",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "kinetic temperature",
+  "default": null
+ },
+ {
+  "name": "TER",
+  "notes": "*93",
+  "length": "[NTE]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "temperature table for input values of CE and CI",
+  "default": "4000.0"
+ },
+ {
+  "name": "TEX",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "excitation temperature",
+  "default": "TE"
+ },
+ {
+  "name": "TGLYM",
+  "notes": "*67",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Lyman change-over TAU parameter",
+  "default": "100.0"
+ },
+ {
+  "name": "TKR",
+  "notes": null,
+  "length": "[LR]",
+  "codes": "D, 3",
+  "mode": "float",
+  "description": "wavelengths for which additional photoionization values are specified",
+  "default": null
+ },
+ {
+  "name": "TLARGE",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "TNP-from-TNU selection parameter",
+  "default": "200.0"
+ },
+ {
+  "name": "TLIMG",
+  "notes": "*34",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "absorption contributors graph axis limit",
+  "default": "0.0 [ = log(1.0)]"
+ },
+ {
+  "name": "TLTR",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "limiting multiplier for TDST recalculation",
+  "default": "1.3"
+ },
+ {
+  "name": "TML",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "large-TAU cut-off for intensity integrals",
+  "default": "30.0"
+ },
+ {
+  "name": "TMS",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "small-TAU change-over for RT weight matrices",
+  "default": "5.0"
+ },
+ {
+  "name": "TOPE",
+  "notes": "*84",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "int",
+  "description": "Continuum Plots save switch",
+  "default": null
+ },
+ {
+  "name": "TR",
+  "notes": null,
+  "length": null,
+  "codes": null,
+  "mode": null,
+  "description": "= ``TRN 1 ''",
+  "default": null
+ },
+ {
+  "name": "TRFLI",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "limit-interval for TR-effective calculation",
+  "default": "1.1"
+ },
+ {
+  "name": "TRN",
+  "notes": "*9, *102",
+  "length": "[N]",
+  "codes": "D, 3*,3",
+  "mode": "float",
+  "description": "radiation temperature (for a given level of the ion of the run)",
+  "default": "TRN_i,1 = TE_i, TRN_i,j = TRN_i,1, \\, all i, \\, all j > 1"
+ },
+ {
+  "name": "TS",
+  "notes": null,
+  "length": "[M]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "standard TAU table",
+  "default": "(0.0, 0.0001, 0.0002, 0.0003, 0.0006, 0.001, 0.002, 0.003, 0.006, 0.01, 0.02, 0.03, 0.06, 0.1, 0.2, 0.3, 0.6, 1.0, 2.0, 3.0, 5.0, 7.0, 10.0, 15.0, 20.0, 30.0, 50.0, 75.0, 100.0, 150.0, 200.0, 300.0, 500.0)"
+ },
+ {
+  "name": "TSM",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "change-over TAU for mean intensity and emergent intensity calculations",
+  "default": "10^-4"
+ },
+ {
+  "name": "TSMALL",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "TNP-from-TNU selection parameter",
+  "default": "10^-10"
+ },
+ {
+  "name": "TX",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "brightness temperature of illuminating source",
+  "default": null
+ },
+ {
+  "name": "USE",
+  "notes": "*44",
+  "length": null,
+  "codes": "B,D,F,H, 1",
+  "mode": "str",
+  "description": "input file designation",
+  "default": "``INPUT''"
+ },
+ {
+  "name": "V",
+  "notes": "*69, *82, *90",
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "broadening velocity",
+  "default": null
+ },
+ {
+  "name": "VM",
+  "notes": "*82",
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "mass motion velocity",
+  "default": null
+ },
+ {
+  "name": "VMNFE",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "minimum velocity (fast electrons)",
+  "default": "0.003"
+ },
+ {
+  "name": "VNH",
+  "notes": "*90",
+  "length": "[NVH]",
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "standard table of V (as a function of HNDV) for the quiet sun",
+  "default": "(15.18, 13.68, 11.92, 10.75, 9.68, 8.44, 7.81, 7.52, 6.95, 6.28, 5.52, 4.60, 3.59, 2.98, 2.20, 2.00, 1.54, 1.38, 1.18, 1.00, 0.86, 0.80, 0.68, 0.65, 0.55, 0.52, 0.63, 0.90, 1.10, 1.30, 1.46, 1.56, 1.64, 1.71, 1.76, 1.80, 1.82, 1.83)"
+ },
+ {
+  "name": "VOITC",
+  "notes": "*50",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Voigt function calculation cut-off",
+  "default": "10^-6"
+ },
+ {
+  "name": "VR",
+  "notes": "*69, *82",
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "broadening velocity",
+  "default": null
+ },
+ {
+  "name": "VSB",
+  "notes": "*51, *82",
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "Sobolev velocity",
+  "default": "VXS or VM"
+ },
+ {
+  "name": "VSMLL",
+  "notes": "*71",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "replacement value for divisors that equal zero (subroutine DIVIDE)",
+  "default": "10^-100"
+ },
+ {
+  "name": "VT",
+  "notes": "*82",
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "turbulent pressure velocity",
+  "default": null
+ },
+ {
+  "name": "VX",
+  "notes": "*57, *82",
+  "length": "[N]",
+  "codes": "F, 3",
+  "mode": "float",
+  "description": "additional expansion velocity for emergent profile calculation",
+  "default": null
+ },
+ {
+  "name": "VXS",
+  "notes": "*60, *82",
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "basic expansion velocity for Line Source Function calculations",
+  "default": "VM"
+ },
+ {
+  "name": "WAVEMN",
+  "notes": "*110",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "automatic additional wavelengths limit",
+  "default": null
+ },
+ {
+  "name": "WAVEMX",
+  "notes": "*110",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "automatic additional wavelengths limit",
+  "default": null
+ },
+ {
+  "name": "WAVES",
+  "notes": "*27",
+  "length": "[NWV]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "additional wavelengths for continuum calculations",
+  "default": null
+ },
+ {
+  "name": "WBD",
+  "notes": "*26",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "weight for departure coefficient updating",
+  "default": "WPOP"
+ },
+ {
+  "name": "WBDIR",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "weight for results of ``direct'' departure coefficient calculation",
+  "default": "1.0"
+ },
+ {
+  "name": "WEIGHT",
+  "notes": null,
+  "length": null,
+  "codes": "D, 6",
+  "mode": "float",
+  "description": "weight for Statistical Equilibrium equations calculation",
+  "default": null
+ },
+ {
+  "name": "WEP",
+  "notes": "*104",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Lyman EP-1 weighting parameter",
+  "default": "1.0"
+ },
+ {
+  "name": "WFB",
+  "notes": null,
+  "length": null,
+  "codes": "F, 1",
+  "mode": "float",
+  "description": "weight for flow broadening component velocities",
+  "default": "0.6"
+ },
+ {
+  "name": "WMN",
+  "notes": "*131",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "RHO weight adjustment parameter",
+  "default": "0.3"
+ },
+ {
+  "name": "WMX",
+  "notes": "*131",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "RHO weight adjustment parameter",
+  "default": "0.9"
+ },
+ {
+  "name": "WNJUNK",
+  "notes": "*87",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "WN-matrix ``cleanup'' parameter",
+  "default": null
+ },
+ {
+  "name": "WNU",
+  "notes": null,
+  "length": "[NSL]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "= NU, but in wavenumbers",
+  "default": null
+ },
+ {
+  "name": "WNUC",
+  "notes": null,
+  "length": "[NSL]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "= NUC, but in wavenumbers",
+  "default": null
+ },
+ {
+  "name": "WNUK",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "= NUK, but in wavenumbers",
+  "default": null
+ },
+ {
+  "name": "WORLDLY",
+  "notes": "*132",
+  "length": null,
+  "codes": "B, 1",
+  "mode": "str",
+  "description": "storage management dump control switch",
+  "default": null
+ },
+ {
+  "name": "WPOP",
+  "notes": "*26",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "weight for number densities updating",
+  "default": "WBD, or 1.0"
+ },
+ {
+  "name": "WPRESS",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "weight for adjusting NH to achieve constant pressure",
+  "default": "1.0"
+ },
+ {
+  "name": "WR",
+  "notes": "*13",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "RHO weighting parameter",
+  "default": "1.0"
+ },
+ {
+  "name": "WRAT",
+  "notes": "*22, *56",
+  "length": "[MR]",
+  "codes": "D, 3",
+  "mode": "float",
+  "description": "wavelengths for rates integrations",
+  "default": null
+ },
+ {
+  "name": "WRATMN",
+  "notes": "*135",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "standard rates integrations wavelengths table limit",
+  "default": "100."
+ },
+ {
+  "name": "WRATMX",
+  "notes": "*135",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "standard rates integrations wavelengths table limit",
+  "default": "20000."
+ },
+ {
+  "name": "WRMN",
+  "notes": "*131",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "RHO weight adjustment parameter",
+  "default": "0.1"
+ },
+ {
+  "name": "WRMX",
+  "notes": "*131",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "RHO weight adjustment parameter",
+  "default": "0.7"
+ },
+ {
+  "name": "WSM",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Lyman RK-KOLEV smoothing parameter",
+  "default": null
+ },
+ {
+  "name": "WSN1D",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "weight for Special N1 and Special NK, Diffusion",
+  "default": "1.0"
+ },
+ {
+  "name": "WTD",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "weight for TDST recalculation",
+  "default": "1.0"
+ },
+ {
+  "name": "WZ",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Z-from-TAUKIN weight",
+  "default": "0.5"
+ },
+ {
+  "name": "WZM",
+  "notes": "*103",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Z weighting parameter",
+  "default": "0.8"
+ },
+ {
+  "name": "XC",
+  "notes": "*42",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "DR parameter, PRD transitions",
+  "default": "2.0"
+ },
+ {
+  "name": "XCL",
+  "notes": "*42",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "DR parameter, PRD transitions",
+  "default": "3.5"
+ },
+ {
+  "name": "XCOL",
+  "notes": null,
+  "length": "[NCL]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "table of wavelengths for each CO line, in doppler widths, for the CO-lines opacity",
+  "default": "(0.0, 0.5, 1.0, 1.5, 2.0)"
+ },
+ {
+  "name": "XCOMX",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "width limit for each CO line, in \\AA, for the CO-lines opacity",
+  "default": "3.0"
+ },
+ {
+  "name": "XDR",
+  "notes": "*42",
+  "length": "[NDR]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "DR parameter, PRD transitions",
+  "default": "(5.5, 6.0, 7.0, 8.0, 10.0, 12.0, 15.0)"
+ },
+ {
+  "name": "XI",
+  "notes": null,
+  "length": null,
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "= XISYM",
+  "default": null
+ },
+ {
+  "name": "XIBLU",
+  "notes": "*66",
+  "length": "[KB]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "Line Transitions frequency table, for blue side",
+  "default": "XISYM"
+ },
+ {
+  "name": "XIBLUT",
+  "notes": "*66",
+  "length": "[KBT]",
+  "codes": "D, 5",
+  "mode": "float",
+  "description": "Line Transition frequency table, for blue side",
+  "default": "XISYMT"
+ },
+ {
+  "name": "XINK",
+  "notes": null,
+  "length": "[INK]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "table of frequencies for which incident radiation is specified",
+  "default": "(5.948, 5.949, 7.48, 7.51, 13.16, 13.17)"
+ },
+ {
+  "name": "XIRED",
+  "notes": "*66",
+  "length": "[KR]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "Line Transitions frequency table, for red side",
+  "default": "XISYM"
+ },
+ {
+  "name": "XIREDT",
+  "notes": "*66",
+  "length": "[KRT]",
+  "codes": "D, 5",
+  "mode": "float",
+  "description": "Line Transition frequency table, for red side",
+  "default": "XISYMT"
+ },
+ {
+  "name": "XISYM",
+  "notes": "*66",
+  "length": "[KS]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "Line Transitions frequency table, for half of a symmetric profile",
+  "default": "(0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.1, 1.3, 1.5, 1.8, 2.1, 2.4, 2.8, 3.4, 3.9, 4.5, 6.0, 8.0, 15.0, 50.0)"
+ },
+ {
+  "name": "XISYMT",
+  "notes": "*66",
+  "length": "[KST]",
+  "codes": "D, 5",
+  "mode": "float",
+  "description": "Line Transition frequency table, for half of a symmetric profile",
+  "default": "XISYM"
+ },
+ {
+  "name": "XJFE",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "electron flux (fast electrons)",
+  "default": "2.0\\times10^-10"
+ },
+ {
+  "name": "XK",
+  "notes": "*123",
+  "length": "[KK]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "Level-\\cal N-to-Continuum calculation (Lyman) frequency table",
+  "default": "RRNU(KOLEV), where RRNU is computed from WRAT"
+ },
+ {
+  "name": "XMU",
+  "notes": null,
+  "length": "[LG]",
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "MU table for GR-method weight matrix calculation",
+  "default": "(1.0, 0.8, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1)"
+ },
+ {
+  "name": "XP",
+  "notes": "*42",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "DR parameter, PRD transitions",
+  "default": "2.0"
+ },
+ {
+  "name": "XR",
+  "notes": "*42",
+  "length": null,
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "DR parameter, PRD transitions",
+  "default": "-1.0"
+ },
+ {
+  "name": "XQMAX",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "parameter for injection function integrations (fast electrons)",
+  "default": "200.0"
+ },
+ {
+  "name": "XRKH",
+  "notes": "*95, *96",
+  "length": "[N]",
+  "codes": "D, 5,5*",
+  "mode": "float",
+  "description": "upper-level charge-exchange data for Hydrogen",
+  "default": null
+ },
+ {
+  "name": "XRLH",
+  "notes": "*95, *96",
+  "length": "[N]",
+  "codes": "D, 5,5*",
+  "mode": "float",
+  "description": "upper-level charge-exchange data for Hydrogen",
+  "default": null
+ },
+ {
+  "name": "Y",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "damping parameter for frequency integrations weights (see Section 12)",
+  "default": "0.5"
+ },
+ {
+  "name": "YCOL",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "weight matrix method control parameter for the continuum calculations required for the CO-lines opacity (see Section 12)",
+  "default": "-1.0"
+ },
+ {
+  "name": "YCONT",
+  "notes": null,
+  "length": null,
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "weight matrix method parameter, for Continuum calculations (see Section 12)",
+  "default": "-1.0"
+ },
+ {
+  "name": "YCR",
+  "notes": null,
+  "length": "[NCR]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "weight matrix method control parameter, for incident coronal radiation (see Section 12)",
+  "default": "-1.0"
+ },
+ {
+  "name": "YFLUX",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "damping parameter for emergent continuum flux",
+  "default": "0.5"
+ },
+ {
+  "name": "YH",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Helium-to-Hydrogen ratio",
+  "default": "Helium abundance (from ELE table)"
+ },
+ {
+  "name": "YHM",
+  "notes": null,
+  "length": "[MHM]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "weight matrix method parameter, for H-minus calculation (see Section 12)",
+  "default": "-1.0"
+ },
+ {
+  "name": "YK",
+  "notes": null,
+  "length": "[NSL]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "Hydrogen recombination parameter",
+  "default": null
+ },
+ {
+  "name": "YKR",
+  "notes": null,
+  "length": "[LR]",
+  "codes": "D, 3",
+  "mode": "float",
+  "description": "weight matrix method parameter, for additional photoionization (see Section 12)",
+  "default": "-1.0"
+ },
+ {
+  "name": "YL",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "weight matrix parameter, for Level-\\cal N-to-Continuum source function calculation (see Section 12)",
+  "default": "-1.0"
+ },
+ {
+  "name": "YLDT",
+  "notes": null,
+  "length": "[NDT]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "weight matrix method parameter, for Type-2 dust opacity calculation (see Section 12)",
+  "default": "-1.0"
+ },
+ {
+  "name": "YLINE",
+  "notes": null,
+  "length": null,
+  "codes": "D, 4",
+  "mode": "float",
+  "description": "weight matrix method parameter, for Line Source Function (see Section 12)",
+  "default": "-1.0"
+ },
+ {
+  "name": "YLYM",
+  "notes": null,
+  "length": "[KK]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "weight matrix parameter, for Level-\\cal N-to-Continuum continuum source function calculations (see Section 12)",
+  "default": "-1.0"
+ },
+ {
+  "name": "YPRE",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "damping parameter for standard weight matrix (see Section 12)",
+  "default": null
+ },
+ {
+  "name": "YRATE",
+  "notes": "*22",
+  "length": "[MR+1]",
+  "codes": "D, 3",
+  "mode": "float",
+  "description": "weight matrix method parameter, for rates calculations (see Section 12)",
+  "default": "-1.0"
+ },
+ {
+  "name": "YRATS",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "damping parameter for standard rates integrations wavelengths (see Section 12)",
+  "default": "-1.0"
+ },
+ {
+  "name": "YWAVE",
+  "notes": null,
+  "length": "[NWV]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "weight matrix method parameter, for additional calculations (see Section 12)",
+  "default": "-1.0"
+ },
+ {
+  "name": "Z",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "grid of geometrical depths (main Z-table of the run)",
+  "default": null
+ },
+ {
+  "name": "ZALBK",
+  "notes": null,
+  "length": "[NKA]",
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "scattering albedo parameter for Background Line Opacities (see Section 9)",
+  "default": "(Z_1, Z_N)"
+ },
+ {
+  "name": "ZAUX",
+  "notes": null,
+  "length": "[LZA]",
+  "codes": "D,F,H, 3",
+  "mode": "float",
+  "description": "auxiliary Z-table",
+  "default": null
+ },
+ {
+  "name": "ZECL",
+  "notes": null,
+  "length": "[NZE]",
+  "codes": "F, 2",
+  "mode": "float",
+  "description": "selected Z-values for eclipse continuum calculation",
+  "default": null
+ },
+ {
+  "name": "ZGM",
+  "notes": "*138",
+  "length": "[NGM]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "Z-table for DGMZ",
+  "default": "(-2000, -1900, -1800, -1700, -1600, -1500, -1400, -1300, -1200, -1100, -1000, -900, -800, -700, -600, -500, -400, -300, -200, -100, -50, 0, 50)"
+ },
+ {
+  "name": "ZMASS",
+  "notes": "*103",
+  "length": "[N]",
+  "codes": "D, 2",
+  "mode": "float",
+  "description": "gas column mass",
+  "default": null
+ },
+ {
+  "name": "ZME",
+  "notes": null,
+  "length": "[N]",
+  "codes": "D, 2*,2",
+  "mode": "float",
+  "description": "non-H electron ratio",
+  "default": null
+ },
+ {
+  "name": "ZNDW",
+  "notes": "*86",
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "Z-value for optional NDW-default calculation",
+  "default": null
+ },
+ {
+  "name": "ZRCO",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "CO reference height",
+  "default": "-500."
+ },
+ {
+  "name": "ZXMIN",
+  "notes": null,
+  "length": null,
+  "codes": "D, 1",
+  "mode": "float",
+  "description": "diffusion calculation parameter for ZION",
+  "default": "0.1"
+ }
+]

@@ -1,0 +1,477 @@
+diff --git a/pan/abakan.f b/pan/abakan.f
+index 65f77a9..2c7711f 100644
+--- a/pan/abakan.f
++++ b/pan/abakan.f
+@@ -36,7 +36,7 @@ C
+         write (NO,100) WAVEDEL
+   100   format(' ','[Required relative difference to render continuum ',
+      $             'wavelengths distinct, WAVEDEL =',1PE10.2,'.]')
+-        if((NDV.gt.0).or.(NWS.gt.0).or.(NSW)) then
++        if((NDV.gt.0).or.(NWS.gt.0).or.(NSW.gt.0)) then
+           write (NO,101)
+   101     format(' ','[However, for SCOW, DWAVE, and DELWAVE, the ',
+      $               'required difference is 1.D-08.]')
+diff --git a/pan/anatini.f b/pan/anatini.f
+index 807853a..1c0651f 100644
+--- a/pan/anatini.f
++++ b/pan/anatini.f
+@@ -115,7 +115,7 @@ C     !BEG
+         FCP   = (JDCPI.gt.0)
+         FCII  = (JDCIV.gt.0).or.(JDCIJ.gt.0).or.(JDCIC.gt.0)
+         FWRAT = (JATAW.gt.0)
+-        FRRCP = (JDRCP.gt.0).or.JATAW
++        FRRCP = (JDRCP.gt.0).or.(JATAW.gt.0)
+         FP    = (JDPSW.gt.0)
+         FXNU  = (JDXNU.gt.0)
+         FNUK  = (JDNUK.gt.0)
+diff --git a/pan/caramba.f b/pan/caramba.f
+index 903fdf5..e60123c 100644
+--- a/pan/caramba.f
++++ b/pan/caramba.f
+@@ -140,7 +140,7 @@ C---- Update population extracts
+ C---- Iterative analysis of N1,NK, and of KZAUG,KZUNL
+       call STOCK     (LUNP, SN1V, SNKV, VEC)
+       call STACK     (LUNP, MN1, N, Z, TE, ZT, KZAS, NZAS, KZUNL)
+-      if(N1NUP) then
++      if(N1NUP.ne.0) then
+ C----   Save for iterative summary
+         call CURVY   (N, NL, XND, XNK)
+       end if
+diff --git a/pan/drink.f b/pan/drink.f
+index b4545fd..86f050c 100644
+--- a/pan/drink.f
++++ b/pan/drink.f
+@@ -57,7 +57,7 @@ C
+       end if
+       DR = DRS
+ C
+-      if(DUMP.gt.0) then
++      if(DUMP) then
+         write (LUEO,101) XP,XC,XXC,DRLIMI(I),DR
+   101   format(' ',30X,1P,
+      $             3X,'    XP=',E12.4,3X,'    XC=',E12.4,
+diff --git a/pan/elima.f b/pan/elima.f
+index b70f400..aec8c9b 100644
+--- a/pan/elima.f
++++ b/pan/elima.f
+@@ -23,7 +23,6 @@ C     !DASH
+ C
+       dimension ABD(2)
+ C
+-      data GO /.false./
+ C
+       call HI ('ELIMA')
+ C     !BEG
+diff --git a/pan/hydru.f b/pan/hydru.f
+index 4630dd1..7fb94cc 100644
+--- a/pan/hydru.f
++++ b/pan/hydru.f
+@@ -91,7 +91,7 @@ C
+ C
+   103 continue
+ C
+-      if(JSSV) then
++      if(JSSV.ne.0) then
+         if(KZXST.gt.0) then
+ C----     Add variation due to shock
+           call PITTED (N, Z, TE, JSSV, SCTA, SCTS, NO)
+diff --git a/sbin/FORxxx b/sbin/FORxxx
+index 97aadfc..c021ed0 100755
+--- a/sbin/FORxxx
++++ b/sbin/FORxxx
+@@ -12,6 +12,9 @@ switch ($1)
+  case -pgi:
+    echo $2 | awk '{printf "FOR%3.3d",$1}'
+  breaksw
++ case -gfortran:
++   echo $2 | awk '{printf "fort.%d",$1}'
++ breaksw
+  default:
+    echo invalid case
+ endsw
+diff --git a/sbin/pandora b/sbin/pandora
+index 6b437f3..2f4ae64 100755
+--- a/sbin/pandora
++++ b/sbin/pandora
+@@ -199,6 +199,13 @@ echo 'running on:'
+ cat /tmp/uname.$$
+ setFOR 98 /tmp/uname.$$
+ #
++if ($?FORTYPE) then
++  # symlink-mode (gfortran): units are fort.NN symlinks in the cwd
++  echo input files:
++  ls -lt `FORxxx 3` `FORxxx 4` `FORxxx 8` `FORxxx 9` `FORxxx 7`
++  echo opacity files:
++  ls -lt `FORxxx 10` `FORxxx 11` `FORxxx 12`
++else
+ cat <<EOF > /tmp/ls.$$
+ echo input files:
+ ls -lt \$`FORxxx 3` \$`FORxxx 4` \$`FORxxx 8` \$`FORxxx 9` \$`FORxxx 7`
+@@ -208,6 +215,7 @@ ls -lt \$`FORxxx 10` \$`FORxxx 11` \$`FORxxx 12`
+ EOF
+ source /tmp/ls.$$
+ rm     /tmp/ls.$$
++endif
+ echo + `date` "$BIN/pandora.x started"
+ $BIN/pandora.x
+ set STATUS = $status
+@@ -215,6 +223,13 @@ echo + `date` "$BIN/pandora.x completed, exit status=$STATUS"
+ #
+ \rm /tmp/uname.$$
+ \rm $OUTPUT/$CASE.tmp.$RUN_ID
++if ($?FORTYPE) then
++  # symlink-mode (gfortran): remove the fort.NN unit symlinks
++  \rm -f fort.1 fort.3 fort.4 fort.7 fort.8 fort.9 fort.10 fort.11 fort.12 \
++         fort.15 fort.16 fort.19 fort.20 fort.21 fort.22 fort.23 fort.24 \
++         fort.25 fort.26 fort.27 fort.28 fort.29 fort.30 fort.31 fort.32 \
++         fort.97 fort.98
++endif
+ #
+ echo output files:
+ ls -lt $OUTPUT/$CASE.???.$RUN_ID
+diff --git a/sbin/setFORx-gfortran.sou b/sbin/setFORx-gfortran.sou
+new file mode 100644
+index 0000000..58227b4
+--- /dev/null
++++ b/sbin/setFORx-gfortran.sou
+@@ -0,0 +1,8 @@
++# gfortran has no environment-variable logical-unit mapping (unlike
++# ifort's FORTnn or PGI's FORnnn): pre-connect units with fort.NN
++# symlinks in the current directory instead.
++# 2026 Jul 24 - added for the gfortran port
++set FORTYPE = symlink
++alias FORxxx $BIN/FORxxx -gfortran
++alias setFOR   'ln -sf \!\!:2 fort.\!\!:1'
++alias unsetFOR 'rm -f fort.\!\!:1'
+diff --git a/sys/calypso.f b/sys/calypso.f
+index f1bc3ac..f49a8a9 100644
+--- a/sys/calypso.f
++++ b/sys/calypso.f
+@@ -8,7 +8,6 @@ C     !DASH
+ C     !DASH
+       integer LUN
+ C     !DASH
+-      external flush
+ C
+ C     !BEG
+       call flush (LUN)
+diff --git a/sys/get_date.F b/sys/get_date.F
+index f3d30c9..a66df9a 100644
+--- a/sys/get_date.F
++++ b/sys/get_date.F
+@@ -10,7 +10,7 @@ C     !DASH
+       logical error
+       character BLANK*1, DAIT*11, ZERO*1
+ C     !DASH
+-      external  idate, MONTH
++      external  MONTH
+ C
+       dimension DATE(3)
+       data      BLANK, ZERO /' ', '0'/
+@@ -18,7 +18,7 @@ C
+ C     !BEG
+       call idate (DATE)
+       iYY = date(3)
+-#ifdef __INTEL_COMPILER
++#if defined(__INTEL_COMPILER) || defined(__GFORTRAN__)
+       iMM = date(2)
+       iDD = date(1)
+ #else
+diff --git a/sys/get_time.f b/sys/get_time.f
+index 2a1e75b..43c6961 100644
+--- a/sys/get_time.f
++++ b/sys/get_time.f
+@@ -9,7 +9,6 @@ C     !DASH
+       integer I, TIME
+       character BLANK*1, TYME*8, ZERO*1
+ C     !DASH
+-      external  itime
+ C
+       dimension TIME(3)
+ C
+diff --git a/sys/is_xxx-gfortran.f b/sys/is_xxx-gfortran.f
+new file mode 100644
+index 0000000..7e823a5
+--- /dev/null
++++ b/sys/is_xxx-gfortran.f
+@@ -0,0 +1,17 @@
++c
++c     this is a modern version, using IEEE_ARITHMETIC
++c     ifort wil compile this right, pgf77 NOT
++c
++c     Nov  4 2013 - SGK
++c
++      logical function is_inf_r8(value)
++      USE, INTRINSIC :: IEEE_ARITHMETIC
++      real*8 value
++      is_inf_r8 = .not. ieee_is_finite( VALUE )
++      end
++
++      logical function is_nan_r8(value)
++      USE, INTRINSIC :: IEEE_ARITHMETIC
++      real*8 value
++      is_nan_r8 = ieee_is_nan( VALUE )
++      end
+diff --git a/sys/luck.f b/sys/luck.f
+index 14cf737..ddd8adb 100644
+--- a/sys/luck.f
++++ b/sys/luck.f
+@@ -12,7 +12,7 @@ C     !DASH
+       external IOFAULT
+ C
+ C     !BEG
+-      open (unit=UNIT, status='OLD', form='FORMATTED', READONLY,
++      open (unit=UNIT, status='OLD', form='FORMATTED', action='READ',
+      $                 iostat=IOSTAT)
+ C
+       if(IOSTAT.ne.0) then
+diff --git a/sys/muck.f b/sys/muck.f
+index a4d1a4a..367281b 100644
+--- a/sys/muck.f
++++ b/sys/muck.f
+@@ -14,7 +14,7 @@ C     !DASH
+       external IOFAULT
+ C
+ C     !BEG
+-      open (unit=UNIT, file=NAME, status='OLD', READONLY,
++      open (unit=UNIT, file=NAME, status='OLD', action='READ',
+      $                 form='FORMATTED', iostat=IOSTAT)
+ C
+       if(IOSTAT.ne.0) then
+diff --git a/sys/percord.f b/sys/percord.f
+index 048919f..d0dc500 100644
+--- a/sys/percord.f
++++ b/sys/percord.f
+@@ -62,7 +62,7 @@ C----   Attempt to write to data archive file
+           open (unit=LUPD, status='OLD', access='APPEND', err=105)
+           write (LUPD,104) LINE
+   104     format(A)
+-          close (unit=LUPD, disp='KEEP')
++          close (unit=LUPD, status='KEEP')
+           goto 107
+   105   continue
+           KN = KN+1
+diff --git a/sys/puck.f b/sys/puck.f
+index 0e84e1d..6581be5 100644
+--- a/sys/puck.f
++++ b/sys/puck.f
+@@ -12,7 +12,7 @@ C     !DASH
+       external IOFAULT
+ C
+ C     !BEG
+-      open (unit=UNIT, status='OLD', form='UNFORMATTED', READONLY,
++      open (unit=UNIT, status='OLD', form='UNFORMATTED', action='READ',
+      $                 iostat=IOSTAT)
+ C
+       if(IOSTAT.ne.0) then
+diff --git a/sys/second.f b/sys/second.f
+index ba9ec3a..640769d 100644
+--- a/sys/second.f
++++ b/sys/second.f
+@@ -9,7 +9,6 @@ C     !DASH
+       real*8 TIME
+       real*4 T, TARRAY
+ C     !DASH
+-      external etime
+ C
+       dimension TARRAY(2)
+ C
+diff --git a/util/Makefile.inc b/util/Makefile.inc
+index 6a138a0..e34c775 100644
+--- a/util/Makefile.inc
++++ b/util/Makefile.inc
+@@ -2,15 +2,15 @@
+ # Pandora utility makefile <- Last updated: Wed Mar 19 22:19:44 2014 -> SGK
+ #
+ cents.x: cents.o
+-	$(FC) -o $@ $< $(SYS)/syslib.a
++	$(FC) -o $@ $< $(PAN)/panlib.a $(ZOO)/zoolib.a $(SYS)/syslib.a
+ dimes.x: dimes.o
+ 	$(FC) -o $@ $<
+ he1diff.x: he1diff.o
+ 	$(FC) -o $@ $<
+ modup.x: modup.o 
+-	$(FC) -o $@ $< $(SYS)/syslib.a $(ZOO)/zoolib.a
++	$(FC) -o $@ $< $(PAN)/panlib.a $(ZOO)/zoolib.a $(SYS)/syslib.a
+ ready.x: ready.o
+-	$(FC) -o $@ $< $(SYS)/syslib.a
++	$(FC) -o $@ $< $(PAN)/panlib.a $(ZOO)/zoolib.a $(SYS)/syslib.a
+ wrap.x: wrap.o
+ 	$(FC) -o $@ $<
+ lookat.x: lookat.o
+diff --git a/util/cents.f b/util/cents.f
+index 7896bf5..7c191d9 100644
+--- a/util/cents.f
++++ b/util/cents.f
+@@ -54,7 +54,7 @@ C
+         print 100
+   100   format(' Type 1 to use regular data, 2 to use diffusion ',
+      $         'data (I1): ',$)
+-        accept 101, LDAT
++        read 101, LDAT
+   101   format(I1)
+         if(LDAT.eq.2) then
+           TARGET = 'CENSOR'
+@@ -95,7 +95,7 @@ c
+       character ATTAB*(*)
+       dimension ATTAB(MATX), NCHAR(MATX), MXION(MATX)
+ c     
+-      open(lu, file='ions.list', status='OLD', readonly)
++      open(lu, file='ions.list', status='OLD', action='READ')
+       mat = 0
+  10   read(lu,'(a40)',end=100) line
+       mat = mat + 1
+@@ -261,7 +261,7 @@ C
+       external RUN_DATA
+ C
+       close (LU)
+-      open (unit=LU, file=NAME(:LN), status='OLD', readonly)
++      open (unit=LU, file=NAME(:LN), status='OLD', action='READ')
+       call RUN_DATA (LU,2,jummy,jummy,jummy,jummy,jummy,qummy,jummy,
+      $               qummy,qummy,SD)
+ C
+@@ -286,7 +286,7 @@ C
+       dimension Z(*), FION(*), FLVS(*)
+ C
+       close (LU)
+-      open (unit=LU, file=FILENM(:LN), status='OLD', readonly)
++      open (unit=LU, file=FILENM(:LN), status='OLD', action='READ')
+       rewind (LU)
+ C
+   100 continue
+diff --git a/util/lookat.f b/util/lookat.f
+index 0472a34..b609cc7 100644
+--- a/util/lookat.f
++++ b/util/lookat.f
+@@ -75,7 +75,7 @@ C
+       data (NSE(I),I=1,9) /9*0/
+       data (KVS(I),I=1,9) /9*0/
+ C
+-      data IFF /'0C'X/
++      data IFF /12/
+       data STRENG, LORENG /' ', 0/
+       data NLS, NCS, NGR, MORE /60, 132, 10, 0/
+       data LININC, NOVR /59, 0/
+@@ -516,7 +516,7 @@ C     !EJECT
+         print 101
+   101   format(' ','End of output file: target string not found. ',
+      $             'Please press <Return>.',$)
+-        accept 102, DUMMY
++        read 102, DUMMY
+   102   format(A)
+         goto 106
+       end if
+@@ -536,7 +536,7 @@ C
+       print 104
+   104 format(' ','Sorry, LOOKAT is confused; please press <Return> ',
+      $           'and then try something else.',$)
+-      accept 102, DUMMY
++      read 102, DUMMY
+       goto 106
+ C
+   105 continue
+@@ -624,7 +624,7 @@ C
+       end if
+       PRECEDE = COMMAND
+       COMMAND = ' '
+-      accept 105, COMMAND
++      read 105, COMMAND
+   105 format(A)
+ C     !end
+       return
+@@ -1140,7 +1140,7 @@ C----   Search command
+      $               'then <Return>: ',$)
+           OLDSTR = STRING
+           STRING = ' '
+-          accept 117, STRING
++          read 117, STRING
+   117     format(A)
+           if((STRING(1:1).eq.' ').and.(OLDSTR(1:1).eq.'"')) then
+             STRING = OLDSTR
+@@ -2338,7 +2338,7 @@ C     !beg
+ C     !EJECT
+       print 99
+    99 format(' ','Type "startup information": ',$)
+-      accept 102, NAME
++      read 102, NAME
+       NC = len(NAME)
+       if(NC.gt.0) then
+         JP = index(NAME,'.aaa')
+@@ -2355,7 +2355,7 @@ C
+         KOUNT = KOUNT+1
+         print 104
+   104   format(' ','Type name of Pandora output file: ',$)
+-        accept 102, NAME
++        read 102, NAME
+         NC = len(NAME)
+         JP = index(NAME,'.aaa')
+         if(JP.gt.0) then
+@@ -2376,7 +2376,7 @@ C
+ C
+       print 106
+   106 format(' ','Does the corresponding index file exist (y/n)? ',$)
+-      accept 102, R
++      read 102, R
+       if(R.eq.'y') then
+         NAIX = 11
+       end if
+@@ -2386,13 +2386,13 @@ C     !EJECT
+         NAMEAAA            = NAME(:NC)
+         NAMEOUT            = NAMEAAA
+         NAMEOUT(JP+1:JP+3) = 'out'
+-        open (unit=NAAA, file=NAMEAAA, status='OLD', readonly)
++        open (unit=NAAA, file=NAMEAAA, status='OLD', action='READ')
+       end if
+       if(NAIX.gt.0) then
+         MODE               = 1
+         NAMEAIX            = NAMEAAA
+         NAMEAIX(JP+2:JP+3) = 'ix'
+-        open (unit=NAIX, file=NAMEAIX, status='OLD', readonly)
++        open (unit=NAIX, file=NAMEAIX, status='OLD', action='READ')
+       end if
+ C
+   999 continue
+@@ -2504,7 +2504,7 @@ C
+           print 104
+   104     format(' ','See more of the index? Type "y" or "n", then ',
+      $               '<Return>: ',$)
+-          accept 105, DUMMY
++          read 105, DUMMY
+   105     format(A)
+           if(DUMMY.eq.'y') goto 100
+         end if
+@@ -2914,7 +2914,7 @@ C     !EDECL
+ C     !beg
+       print 100
+   100 format(' ','Please type <Return> to continue.',$)
+-      accept 101, REPLY
++      read 101, REPLY
+   101 format(A1)
+ C     !end
+       return
+diff --git a/util/ready.f b/util/ready.f
+index 1efd0c5..17f59de 100644
+--- a/util/ready.f
++++ b/util/ready.f
+@@ -33,7 +33,7 @@ C
+ C
+       print 100
+   100 format('Print desired value of IOMX (I2): ',$)
+-      accept 101, IT
++      read 101, IT
+   101 format(I2)
+ C
+       K = 0
+diff --git a/zoo/abject.f b/zoo/abject.f
+index ca3373e..d13a719 100644
+--- a/zoo/abject.f
++++ b/zoo/abject.f
+@@ -13,7 +13,7 @@ C     !DASH
+ C     !DASH
+       intrinsic char
+ C
+-      data KILROY,IFF /.true., '0C'X/
++      data KILROY,IFF /.true., 12/
+ C
+ C     !BEG
+       if(KILROY) then
