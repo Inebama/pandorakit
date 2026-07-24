@@ -373,3 +373,30 @@ def test_empty_restart_placeholder(tmp_path):
 
     src = inspect.getsource(runner.PandoraRun.execute)
     assert "USE ( INPUT )" in src
+
+
+# ---------------------------------------------------------------- gui axes
+def test_depth_axes():
+    from pandorakit.gui import depth_axes
+
+    src = DEMOS / "6" / "leid.mod"
+    if not src.exists():
+        pytest.skip("demos not present")
+    m = Atmosphere.read(src)
+    axes = depth_axes(m)
+    assert set(axes) == {"index", "z_km", "logm", "logtau"}
+    n = m.n
+    for k, a in axes.items():
+        assert len(a["values"]) == n, k
+    # all axes: top of atmosphere first => values increase with index
+    for k in ("z_km", "logm", "logtau"):
+        v = axes[k]["values"]
+        assert v[0] == min(v) and v[-1] == max(v), k
+    # tau grows monotonically over many decades top -> bottom
+    # (leid is a chromosphere-only slab: tau5000 << 1 everywhere is
+    # physically correct there)
+    lt = axes["logtau"]["values"]
+    assert lt[-1] - lt[0] > 4
+    assert all(lt[i] <= lt[i + 1] + 1e-9 for i in range(len(lt) - 1))
+    # z in km matches model z in cm
+    assert axes["z_km"]["values"][0] == pytest.approx(m.z[0] / 1e5)

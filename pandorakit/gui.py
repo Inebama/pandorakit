@@ -35,6 +35,28 @@ from .model import Atmosphere
 from .outputs import AaaFile
 from .runner import PandoraInstall, PandoraRun
 
+# Everyday vocabulary -> the terms PANDORA's own parameter descriptions
+# use. Lets a user search "wind" and find VXS/VX ("expansion velocity").
+_PARAM_SYNONYMS = {
+    "wind": ("expansion",),
+    "outflow": ("expansion",),
+    "velocity field": ("expansion",),
+    "turbulence": ("broadening velocity", "turbulent"),
+    "microturbulence": ("broadening velocity",),
+    "temperature": ("temperature",),
+    "iterations": ("iteration",),
+    "gravity": ("gravity",),
+    "abundance": ("abundance",),
+    "prd": ("redistribution",),
+    "crd": ("redistribution",),
+    "sphere": ("spherical",),
+    "radius": ("spherical", "distance"),
+    "spectrum": ("emergent", "profile"),
+    "profile": ("profile",),
+    "opacity": ("opacit",),
+    "column mass": ("column mass",),
+}
+
 _STATE = {
     "install": None,
     "root": None,
@@ -48,6 +70,72 @@ _LOCK = threading.Lock()
 # --------------------------------------------------------------------------
 def _json_bytes(obj) -> bytes:
     return json.dumps(obj).encode()
+
+
+def depth_axes(m: "Atmosphere") -> dict:
+    """Alternative depth axes for plotting a model, from its own tables.
+
+    Returns {key: {"label": str, "values": [...]}} with, as available:
+
+      index   -- depth index 1..N (always);
+      z_km    -- height [km] (negative above the surface reference);
+      logm    -- log10 column mass [g/cm^2]: from ZMASS when the model
+                 has it, else integrated from NH (rho = 1.4 m_H n_H);
+      logtau  -- log10 tau(5000 A): an LTE estimate from H- bound-free
+                 (Saha) + Thomson scattering -- approximate, for
+                 orientation, and labeled as such. Both logm and logtau
+                 increase downward, so the atmosphere's top is always
+                 on the left of the plots.
+    """
+    import math
+
+    n = m.n
+    axes = {
+        "index": {"label": "depth index", "values": list(range(1, n + 1))}
+    }
+    if m.z:
+        axes["z_km"] = {"label": "height [km]",
+                        "values": [zi / 1e5 for zi in m.z]}
+
+    M_H = 1.6726e-24
+    if m.zmass:
+        axes["logm"] = {
+            "label": "log m [g/cm2]",
+            "values": [math.log10(max(x, 1e-12)) for x in m.zmass],
+        }
+    elif m.z and m.nh:
+        col = []
+        acc = 1.4 * M_H * m.nh[0] * abs(m.z[1] - m.z[0]) * 0.1
+        for i in range(n):
+            if i > 0:
+                acc += (1.4 * M_H * 0.5 * (m.nh[i] + m.nh[i - 1])
+                        * (m.z[i] - m.z[i - 1]))
+            col.append(math.log10(max(acc, 1e-12)))
+        axes["logm"] = {"label": "log m [g/cm2] (integrated)",
+                        "values": col}
+
+    if m.z and m.nh and m.ne and m.te:
+        SIG_HM = 3.0e-17   # H- bf cross-section at 5000 A [cm^2]
+        SIG_T = 6.652e-25  # Thomson
+        tau = []
+        acc = 1e-12
+        kap_prev = None
+        for i in range(n):
+            T = max(m.te[i], 1.0)
+            # Saha: n(H-)/(n(HI) n_e), and H ionization for n(HI)
+            phi_hm = 1.035e-16 * T ** -1.5 * math.exp(min(8762.0 / T, 60))
+            phi_h = 2.415e15 * T ** 1.5 * math.exp(-157800.0 / T)
+            nhi = m.nh[i] / (1.0 + phi_h / max(m.ne[i], 1.0))
+            kap = nhi * m.ne[i] * phi_hm * SIG_HM + SIG_T * m.ne[i]
+            if i > 0:
+                acc += 0.5 * (kap + kap_prev) * (m.z[i] - m.z[i - 1])
+            kap_prev = kap
+            tau.append(math.log10(max(acc, 1e-12)))
+        axes["logtau"] = {
+            "label": "log tau(5000) [approx: H- + Thomson, LTE]",
+            "values": tau,
+        }
+    return axes
 
 
 def _model_payload():
@@ -67,6 +155,7 @@ def _model_payload():
         "vt": m.vt,
         "vxs": m.vxs,
         "issues": m.validate(),
+        "axes": depth_axes(m),
     }
 
 
@@ -176,11 +265,17 @@ class Handler(BaseHTTPRequestHandler):
                     .read_text()
                 )
                 needle = q.get("q", "").upper()
+                # everyday words -> PANDORA's own vocabulary, so users
+                # need not know the code's terminology to search
+                needles = {needle} | {
+                    s.upper() for s in _PARAM_SYNONYMS.get(needle.lower(), ())
+                }
                 hits = [
                     p for p in db
-                    if p.get("name") and (
-                        needle in p["name"].upper()
-                        or needle in (p.get("description") or "").upper()
+                    if p.get("name") and any(
+                        nd in p["name"].upper()
+                        or nd in (p.get("description") or "").upper()
+                        for nd in needles
                     )
                 ][:80]
                 self._send(200, _json_bytes(hits))
@@ -338,6 +433,11 @@ th{color:var(--dim);font-weight:500}
       <button class="go" onclick="saveModel()">Save</button>
     </div>
     <div class="browser" id="fileBrowser" style="display:none;margin-top:8px"></div>
+    <div class="row" style="margin-top:8px;align-items:center">
+      <label style="margin:0">Depth axis</label>
+      <select id="axisSel" onchange="setAxis(this.value)"></select>
+      <span class="hint" id="axisNote"></span>
+    </div>
     <div class="hint" id="modelInfo">no model loaded</div>
   </div>
   <div class="card">
@@ -468,7 +568,7 @@ async function refresh(){
   const sel = $("rAtom");
   sel.innerHTML = "<option value=''>(none)</option>" +
     atoms.map(a=>`<option>${a}</option>`).join("");
-  if (s.model.loaded){ M = s.model; drawAll(); }
+  if (s.model.loaded){ M = s.model; buildAxisSelector(); drawAll(); }
 }
 refresh();
 
@@ -497,10 +597,39 @@ function pick(path){
 }
 
 /* ---------- model ---------- */
+/* ---------- depth axis ---------- */
+let AXIS = "z_km";
+const AXIS_NAMES = {index:"depth index", z_km:"height [km]",
+                    logm:"log column mass", logtau:"log τ(5000)"};
+function ax(){ return M.axes[AXIS].values; }
+function axLabel(){ return M.axes[AXIS].label; }
+function axFmt(v){
+  if (AXIS === "z_km") return v.toExponential(1);
+  if (AXIS === "index") return v.toFixed(0);
+  return v.toFixed(1);
+}
+function setAxis(k){
+  AXIS = k;
+  $("axisSel").value = k;          // keep the selector in sync
+  $("axisNote").textContent = M.axes[k].label;
+  drawAll();
+}
+function buildAxisSelector(){
+  const sel = $("axisSel");
+  const keys = Object.keys(M.axes);
+  sel.innerHTML = keys.map(k =>
+    `<option value="${k}">${AXIS_NAMES[k] || k}</option>`).join("");
+  if (!keys.includes(AXIS))
+    AXIS = keys.includes("z_km") ? "z_km" : keys[0];
+  sel.value = AXIS;
+  $("axisNote").textContent = M.axes[AXIS].label;
+}
+
 async function loadModel(){
   M = await post("/api/load_model", {path: $("modelPath").value});
   $("savePath").value = $("modelPath").value;
   teHistory = [];
+  buildAxisSelector();
   drawAll();
 }
 async function saveModel(){
@@ -548,41 +677,51 @@ function poly(svg, pts, color, w=2){
 const TEP = {W:1000,H:340,pad:46};
 function teScales(){
   const {W,H,pad}=TEP;
-  const zmin=Math.min(...M.z), zmax=Math.max(...M.z);
+  const av=ax();
+  const a0=Math.min(...av), a1=Math.max(...av);
   const tmin=Math.min(...M.te)*0.9, tmax=Math.max(...M.te)*1.05;
   const lt0=Math.log10(tmin), lt1=Math.log10(tmax);
   return {
-    x: z => pad + (z-zmin)/(zmax-zmin)*(W-2*pad),
+    x: i => pad + (av[i]-a0)/(a1-a0||1)*(W-2*pad),
     y: t => H-pad - (Math.log10(t)-lt0)/(lt1-lt0)*(H-2*pad),
     yi: py => Math.pow(10, lt0 + (H-pad-py)/(H-2*pad)*(lt1-lt0)),
-    zmin,zmax,tmin,tmax
+    tmin,tmax
   };
+}
+function xTicks(svg, W, H, pad){
+  // 6 tick labels evenly spaced ON SCREEN (the depth grid itself is
+  // strongly non-uniform, so index-spaced ticks would collide)
+  const av=ax();
+  const a0=Math.min(...av), a1=Math.max(...av);
+  for (let t=0;t<=5;t++){
+    const val = a0 + (a1-a0)*t/5;
+    const xpx = pad + t/5*(W-2*pad);
+    text(svg, xpx, H-pad+14, axFmt(val));
+  }
+  text(svg, W/2, H-4, axLabel());
 }
 function drawTE(){
   const svg=$("teplot"); const {W,H,pad}=TEP;
   frame(svg,W,H,pad);
   const s=teScales();
-  // axis labels
   for (let i=0;i<=4;i++){
     const t = s.tmin*Math.pow(s.tmax/s.tmin, i/4);
     text(svg, pad-6, s.y(t)+3, (t>=1e4? (t/1e3).toFixed(0)+"k" :
       t.toFixed(0)), "end");
   }
-  for (let i=0;i<=6;i++){
-    const z = s.zmin + (s.zmax-s.zmin)*i/6;
-    text(svg, s.x(z), H-pad+14, (z/1e5).toExponential(1)+" km");
-  }
+  xTicks(svg, W, H, pad);
   text(svg, 14, 16, "T [K] (log)", "start");
-  poly(svg, M.z.map((z,i)=>[s.x(z), s.y(M.te[i])]), "var(--acc2)", 2);
-  M.z.forEach((z,i)=>{
+  poly(svg, M.te.map((t,i)=>[s.x(i), s.y(t)]), "var(--acc2)", 2);
+  M.te.forEach((t,i)=>{
     const c=document.createElementNS("http://www.w3.org/2000/svg","circle");
-    c.setAttribute("cx",s.x(z));c.setAttribute("cy",s.y(M.te[i]));
+    c.setAttribute("cx",s.x(i));c.setAttribute("cy",s.y(t));
     c.setAttribute("r",5);c.setAttribute("fill","var(--acc)");
     c.style.cursor="ns-resize";
     c.addEventListener("pointerdown", e=>startDrag(e,i));
     c.addEventListener("dblclick", ()=>{
-      const v=prompt(`TE at depth ${i+1} (z=${z.toExponential(3)} cm)`,
-                     M.te[i]);
+      const v=prompt(
+        `TE at depth ${i+1} (${axLabel()} = ${axFmt(ax()[i])})`,
+        M.te[i]);
       if(v){pushHist(); M.te[i]=parseFloat(v); drawTE();}
     });
     svg.appendChild(c);
@@ -644,19 +783,21 @@ function drawVel(){
          "no velocity tables in this file - click 'add VXS' to create a wind");
     return;
   }
-  const zmin=Math.min(...M.z), zmax=Math.max(...M.z);
+  const av=ax();
+  const a0=Math.min(...av), a1=Math.max(...av);
   const series=[["vxs",M.vxs,"var(--acc2)"],["vt",M.vt,"var(--acc)"],
                 ["v",M.v,"var(--ok)"]].filter(s=>s[1]);
   const all=series.flatMap(s=>s[1]);
   let v0=Math.min(0,...all), v1=Math.max(1,...all);
   const p=(v1-v0)*0.1; v0-=p; v1+=p;
-  const x=z=>pad+(z-zmin)/(zmax-zmin)*(W-2*pad);
+  const x=i=>pad+(av[i]-a0)/(a1-a0||1)*(W-2*pad);
   const y=v=>H-pad-(v-v0)/(v1-v0)*(H-2*pad);
   const yi=py=>v0+(H-pad-py)/(H-2*pad)*(v1-v0);
   for(let i=0;i<=4;i++){
     const v=v0+(v1-v0)*i/4;
     text(svg,pad-6,y(v)+3,v.toFixed(0),"end");
   }
+  xTicks(svg, W, H, pad);
   if (v0<0){ // zero line
     const l=document.createElementNS("http://www.w3.org/2000/svg","line");
     l.setAttribute("x1",pad);l.setAttribute("y1",y(0));
@@ -665,14 +806,14 @@ function drawVel(){
     svg.appendChild(l);
   }
   series.forEach(([nm,arr,col],k)=>{
-    poly(svg, M.z.map((z,i)=>[x(z),y(arr[i])]), col, nm===act[0]?2.5:1.5);
+    poly(svg, arr.map((vv,i)=>[x(i),y(vv)]), col, nm===act[0]?2.5:1.5);
     text(svg, W-pad-8, pad+14+k*14, nm.toUpperCase(), "end");
   });
   // draggable points on the active series
   const [aname, aarr] = act;
-  M.z.forEach((z,i)=>{
+  aarr.forEach((vv,i)=>{
     const c=document.createElementNS("http://www.w3.org/2000/svg","circle");
-    c.setAttribute("cx",x(z));c.setAttribute("cy",y(aarr[i]));
+    c.setAttribute("cx",x(i));c.setAttribute("cy",y(vv));
     c.setAttribute("r",4.5);c.setAttribute("fill",act[2]);
     c.style.cursor="ns-resize";
     c.addEventListener("pointerdown", e=>{
@@ -707,19 +848,21 @@ function drawVel(){
 function drawDen(){
   const svg=$("denplot"); const W=1000,H=260,pad=46;
   frame(svg,W,H,pad);
-  const zmin=Math.min(...M.z), zmax=Math.max(...M.z);
+  const av=ax();
+  const a0=Math.min(...av), a1=Math.max(...av);
   const series=[["NH",M.nh,"var(--acc)"],["NE",M.ne,"var(--ok)"]]
     .filter(s=>s[1]);
   const all=series.flatMap(s=>s[1]).filter(v=>v>0);
   const l0=Math.log10(Math.min(...all)), l1=Math.log10(Math.max(...all));
-  const x=z=>pad+(z-zmin)/(zmax-zmin)*(W-2*pad);
+  const x=i=>pad+(av[i]-a0)/(a1-a0||1)*(W-2*pad);
   const y=v=>H-pad-(Math.log10(v)-l0)/(l1-l0)*(H-2*pad);
   for(let i=0;i<=4;i++){
     const lv=l0+(l1-l0)*i/4;
     text(svg,pad-6,y(Math.pow(10,lv))+3,"1e"+lv.toFixed(0),"end");
   }
+  xTicks(svg, W, H, pad);
   series.forEach(([nm,arr,col],k)=>{
-    poly(svg, M.z.map((z,i)=>[x(z),y(Math.max(arr[i],1e-30))]), col, 2);
+    poly(svg, arr.map((vv,i)=>[x(i),y(Math.max(vv,1e-30))]), col, 2);
     text(svg, W-pad-8, pad+14+k*14, nm, "end");
   });
   text(svg,14,16,"n [cm⁻³] (log)","start");

@@ -229,6 +229,21 @@ Prefer clicking? `pandorakit gui` opens a browser app: load a model,
 **drag the T(z) curve** and the velocity curve with the mouse, save,
 run — nothing to install, and everything it writes is a normal file.
 
+**Depth axis**: the plots' horizontal axis is switchable on the fly
+(dropdown at the top of the Model editor):
+
+| axis | reads as | when to use |
+|---|---|---|
+| `height [km]` | geometric height; negative = above the surface reference (the engine's own convention) | comparing with published height tables |
+| `log τ(5000)` | optical depth at 5000 Å — small at the top, growing inward | the natural axis for line formation ("where is τ ≈ 1?") |
+| `log column mass` | integrated mass above each point | comparing with Mészáros-style models built on a mass scale |
+| `depth index` | 1…N, the raw grid | checking grid resolution / picking indices for `wind_ramp` |
+
+τ and column mass are computed from your model (τ is an LTE H⁻ +
+Thomson estimate, labeled as approximate — it is for orientation, not
+for publication numbers). Switching the axis only changes the display:
+what you edit and save is always the physical model.
+
 ## 8. Winds and mass loss
 
 A wind is just an array: the outflow speed at each depth (km/s,

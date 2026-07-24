@@ -250,6 +250,12 @@ list in the docstring), any row order (auto-detected). The format is
 specified for users in GETTING_STARTED.md §3.
 
 ## Module `gui`
+`depth_axes(atm)` → `{key: {"label", "values"}}` — alternative depth
+axes for plotting a model: `index`, `z_km`, `logm` (from ZMASS or
+integrated from NH), `logtau` (approximate LTE τ(5000) from H⁻
+bound-free + Thomson). All increase downward, so the top of the
+atmosphere is always plotted on the left.
+
 `serve(root=None, port=8765, open_browser=True)` — the browser GUI
 (model editor with T(z) & velocity drag-editing, run launcher,
 results browser, parameter search). Also `python -m pandorakit.gui`
