@@ -67,6 +67,31 @@ examples/            runnable examples incl. multi-ion chain and batch grid
 tests/               pytest suite
 ```
 
+## Science extensions
+
+* **Velocity fields & winds** — `recipes.wind_ramp` / `set_expansion`
+  build expanding-atmosphere runs (VXS + `DO ( EXPAND )`);
+  `examples/velocity_mass_outflow.py` reproduces the
+  Mészáros-Avrett-Dupree red-giant workflow on the shipped `leid`
+  giant model (core blueshift, B/R asymmetry, mass-loss estimate) and
+  the GUI's Model editor includes a draggable velocity-table editor.
+* **CRD / PRD per transition** — CRD is PANDORA's default; PRD is a
+  per-line switch (`SCH u l`). `recipes.set_redistribution` toggles
+  it; `examples/prd_vs_crd.py` demonstrates the factor ~2 inner-wing
+  difference on Mg II k.
+* **Chromosphere builder** — `recipes.chromosphere_te_logm` implements
+  the T-linear-in-log(column-mass) parameterization of Mészáros et
+  al. 2009.
+* **Bridges to other codes** — `to_multi_atmos` exports models in the
+  MULTI/RH `.atmos` text format for cross-checking with the RH family
+  (cf. Rutten & Uitenbroek 2012).
+* **Atomic data** — age/quality audit and safe update procedure in
+  [docs/ATOMIC_DATA.md](docs/ATOMIC_DATA.md).
+* **Teaching** — a week-long course pack (intro → NLTE → PRD →
+  hands-on → mass loss → frontiers) in
+  [docs/course/](docs/course/README.md), physics crosschecked against
+  Hubeny & Mihalas (2015) and Gray (2022).
+
 ## Status & caveats
 
 * Build verified with gfortran 14 on macOS/arm64; demos 1–7 run.

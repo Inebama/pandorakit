@@ -65,6 +65,7 @@ def _model_payload():
         "nh": m.nh,
         "v": m.v,
         "vt": m.vt,
+        "vxs": m.vxs,
         "issues": m.validate(),
     }
 
@@ -218,7 +219,7 @@ class Handler(BaseHTTPRequestHandler):
             elif u.path == "/api/update_model":
                 with _LOCK:
                     m: Atmosphere = _STATE["model"]
-                    for key in ("z", "te", "ne", "nh", "v", "vt"):
+                    for key in ("z", "te", "ne", "nh", "v", "vt", "vxs"):
                         if key in body and body[key] is not None:
                             setattr(m, key, [float(x) for x in body[key]])
                 self._send(200, _json_bytes(_model_payload()))
@@ -226,20 +227,9 @@ class Handler(BaseHTTPRequestHandler):
                 path = Path(body["path"]).expanduser()
                 with _LOCK:
                     m: Atmosphere = _STATE["model"]
-                    # preserve original deck structure when saving over a
-                    # loaded file: replace arrays in the original deck
-                    src = _STATE["model_path"]
-                    if src and Path(src).exists():
-                        deck = Deck.read(src)
-                        for key, arr in (
-                            ("Z", m.z), ("TE", m.te), ("NE", m.ne),
-                            ("NH", m.nh), ("V", m.v), ("VT", m.vt),
-                        ):
-                            if arr is not None and deck.get(key) is not None:
-                                deck.get(key).values = list(arr)
-                        deck.write(path)
-                    else:
-                        m.write(path)
+                    # Atmosphere wraps its source deck: to_deck() keeps the
+                    # original statement structure and replaces the arrays
+                    m.write(path)
                     _STATE["model_path"] = path
                 self._send(200, _json_bytes({"saved": str(path)}))
             elif u.path == "/api/run":
@@ -360,6 +350,18 @@ th{color:var(--dim);font-weight:500}
       <button class="mini" onclick="undoTE()">undo</button>
     </div>
     <svg id="teplot" height="340" viewBox="0 0 1000 340"></svg>
+  </div>
+  <div class="card">
+    <div class="row" style="align-items:center">
+      <b>Velocities</b>
+      <span class="hint" id="velInfo">km/s; drag points like T(z).
+        VXS = expansion (outflow +), VT/V = broadening.
+        A run only feels VXS with DO ( EXPAND ) in its deck
+        (see recipes.set_expansion / examples/velocity_mass_outflow.py)</span>
+      <span style="margin-left:auto"></span>
+      <button class="mini" id="addVxsBtn" onclick="addVXS()">add VXS (wind) table</button>
+    </div>
+    <svg id="velplot" height="260" viewBox="0 0 1000 260"></svg>
   </div>
   <div class="card">
     <b>Densities</b>
@@ -502,7 +504,8 @@ async function loadModel(){
   drawAll();
 }
 async function saveModel(){
-  await post("/api/update_model", {te: M.te, ne: M.ne, nh: M.nh});
+  await post("/api/update_model",
+             {te: M.te, ne: M.ne, nh: M.nh, v: M.v, vt: M.vt, vxs: M.vxs});
   const j = await post("/api/save_model", {path: $("savePath").value});
   $("modelInfo").textContent = "saved to " + j.saved;
 }
@@ -512,7 +515,7 @@ function drawAll(){
     `${M.name}: N=${M.n} depths, T ${Math.min(...M.te).toFixed(0)}–` +
     `${Math.max(...M.te).toFixed(0)} K` +
     (M.issues.length ? "  ⚠ " + M.issues.join("; ") : "  ✓ runnable");
-  drawTE(); drawDen();
+  drawTE(); drawDen(); drawVel();
 }
 
 /* ---- generic plot helpers ---- */
@@ -615,6 +618,89 @@ function startDrag(e,i){
                window.removeEventListener("pointerup",up);};
   window.addEventListener("pointermove",move);
   window.addEventListener("pointerup",up);
+}
+
+/* ---- velocity editor ---- */
+// active editable series: VXS if present, else VT, else V
+function velActive(){
+  if (M.vxs) return ["vxs", M.vxs, "var(--acc2)"];
+  if (M.vt)  return ["vt",  M.vt,  "var(--acc)"];
+  if (M.v)   return ["v",   M.v,   "var(--acc)"];
+  return null;
+}
+function addVXS(){
+  if (!M || !M.loaded) return;
+  if (!M.vxs) M.vxs = new Array(M.n).fill(0.0);
+  drawVel();
+}
+let vdrag=null;
+function drawVel(){
+  const svg=$("velplot"); const W=1000,H=260,pad=46;
+  frame(svg,W,H,pad);
+  const act = velActive();
+  $("addVxsBtn").style.display = (M && M.loaded && !M.vxs) ? "" : "none";
+  if (!act){
+    text(svg, W/2, H/2,
+         "no velocity tables in this file - click 'add VXS' to create a wind");
+    return;
+  }
+  const zmin=Math.min(...M.z), zmax=Math.max(...M.z);
+  const series=[["vxs",M.vxs,"var(--acc2)"],["vt",M.vt,"var(--acc)"],
+                ["v",M.v,"var(--ok)"]].filter(s=>s[1]);
+  const all=series.flatMap(s=>s[1]);
+  let v0=Math.min(0,...all), v1=Math.max(1,...all);
+  const p=(v1-v0)*0.1; v0-=p; v1+=p;
+  const x=z=>pad+(z-zmin)/(zmax-zmin)*(W-2*pad);
+  const y=v=>H-pad-(v-v0)/(v1-v0)*(H-2*pad);
+  const yi=py=>v0+(H-pad-py)/(H-2*pad)*(v1-v0);
+  for(let i=0;i<=4;i++){
+    const v=v0+(v1-v0)*i/4;
+    text(svg,pad-6,y(v)+3,v.toFixed(0),"end");
+  }
+  if (v0<0){ // zero line
+    const l=document.createElementNS("http://www.w3.org/2000/svg","line");
+    l.setAttribute("x1",pad);l.setAttribute("y1",y(0));
+    l.setAttribute("x2",W-pad);l.setAttribute("y2",y(0));
+    l.setAttribute("stroke","var(--grid)");l.setAttribute("stroke-dasharray","4 4");
+    svg.appendChild(l);
+  }
+  series.forEach(([nm,arr,col],k)=>{
+    poly(svg, M.z.map((z,i)=>[x(z),y(arr[i])]), col, nm===act[0]?2.5:1.5);
+    text(svg, W-pad-8, pad+14+k*14, nm.toUpperCase(), "end");
+  });
+  // draggable points on the active series
+  const [aname, aarr] = act;
+  M.z.forEach((z,i)=>{
+    const c=document.createElementNS("http://www.w3.org/2000/svg","circle");
+    c.setAttribute("cx",x(z));c.setAttribute("cy",y(aarr[i]));
+    c.setAttribute("r",4.5);c.setAttribute("fill",act[2]);
+    c.style.cursor="ns-resize";
+    c.addEventListener("pointerdown", e=>{
+      vdrag={i, shift:e.shiftKey};
+      const move=ev=>{
+        const r=svg.getBoundingClientRect();
+        const nv=yi((ev.clientY-r.top)*H/r.height);
+        if (vdrag.shift){
+          const sig=Math.max(2, M.n/12);
+          const dv=nv-aarr[vdrag.i];
+          for(let k2=0;k2<M.n;k2++){
+            aarr[k2]+=dv*Math.exp(-0.5*Math.pow((k2-vdrag.i)/sig,2));
+          }
+        } else { aarr[vdrag.i]=nv; }
+        drawVel();
+      };
+      const up=()=>{window.removeEventListener("pointermove",move);
+                    window.removeEventListener("pointerup",up);};
+      window.addEventListener("pointermove",move);
+      window.addEventListener("pointerup",up);
+    });
+    c.addEventListener("dblclick", ()=>{
+      const nv=prompt(`${aname.toUpperCase()} at depth ${i+1} (km/s)`, aarr[i]);
+      if(nv!==null){aarr[i]=parseFloat(nv); drawVel();}
+    });
+    svg.appendChild(c);
+  });
+  text(svg,14,16,`km/s (editing ${aname.toUpperCase()})`,"start");
 }
 
 /* ---- density plot ---- */

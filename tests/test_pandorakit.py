@@ -150,3 +150,131 @@ def test_outputs_reference_profile():
     assert blocks and all(len(b.wl) == len(b.ilam) for b in blocks)
     mus = {b.mu for b in blocks}
     assert 1.0 in mus
+
+
+# ---------------------------------------------------------------- recipes
+def test_wind_ramp_shape():
+    from pandorakit.recipes import wind_ramp
+
+    v = wind_ramp(72, v_top=15.0, i_zero=55, i_top=15)
+    assert len(v) == 72
+    assert v[0] == 15.0 and v[15] == 15.0
+    assert v[55] == 0.0 and v[71] == 0.0
+    assert all(v[i] >= v[i + 1] for i in range(71))  # monotonic decline
+
+
+def test_set_expansion_and_redistribution():
+    from pandorakit.recipes import set_expansion, set_redistribution
+
+    d = Deck.parse("DO ( EXPAND ) >\nVXS ( 1. 2. 3. ) >\nGO >\nIOMX ( 2 ) >\nGO >\nGO >\nGO\n")
+    set_expansion(d, None)
+    assert d.get("VXS") is None
+    dos = [s for s in d.statements() if s.name.upper() == "OMIT"]
+    assert any(str(s.values[0]).upper() == "EXPAND" for s in dos)
+
+    d2 = Deck.parse("IOMX ( 2 ) >\nGO >\nA 2 1 ( 1.E8 ) >\nGO >\nGO >\nGO\n")
+    set_redistribution(d2, 2, 1, "prd", gmma=-0.9)
+    assert d2.get("SCH 2 1").scalar == 1
+    assert d2.get("GMMA 2 1").scalar == -0.9
+    set_redistribution(d2, 2, 1, "crd")
+    assert d2.get("SCH 2 1") is None
+
+
+def test_chromosphere_builder():
+    from pandorakit.recipes import chromosphere_te_logm
+
+    zm, te = chromosphere_te_logm(
+        zmass_phot=[1.0, 2.0, 5.0], te_phot=[4200.0, 4600.0, 5200.0],
+        t_max=9000.0, n_chromo=50, n_tr=10,
+    )
+    assert len(zm) == len(te) == 63
+    # top-down: TR first (hot), then chromosphere, then photosphere
+    assert te[0] == pytest.approx(2.0e5, rel=1e-6)
+    assert te[-1] == 5200.0
+    # column mass increases monotonically downward
+    assert all(zm[i] < zm[i + 1] for i in range(len(zm) - 1))
+
+
+def test_core_shift_and_asymmetry():
+    import math
+
+    from pandorakit.recipes import core_shift_and_asymmetry
+
+    # symmetric double-peaked emission with central self-reversal
+    wl = [(-40 + i) / 20.0 for i in range(81)]
+    prof = [
+        1.0
+        + 2.0 * math.exp(-0.5 * ((abs(w) - 0.5) / 0.15) ** 2)
+        - 2.5 * math.exp(-0.5 * (w / 0.1) ** 2)
+        for w in wl
+    ]
+    d = core_shift_and_asymmetry(wl, prof, 4000.0)
+    assert abs(d["core_shift_kms"]) < 2
+    assert d["br_ratio"] == pytest.approx(1.0, abs=0.02)
+
+    # blueshift the core: minimum moved to -0.1 A
+    prof2 = [
+        1.0
+        + 2.0 * math.exp(-0.5 * ((abs(w) - 0.5) / 0.15) ** 2)
+        - 2.5 * math.exp(-0.5 * ((w + 0.1) / 0.1) ** 2)
+        for w in wl
+    ]
+    d2 = core_shift_and_asymmetry(wl, prof2, 4000.0)
+    assert d2["core_shift_kms"] < -4  # ~-7.5 km/s expected
+
+
+def test_mass_loss_rate_magnitude():
+    from pandorakit.recipes import mass_loss_rate
+
+    # MAD09-like layer: R=70 Rsun, NH=1e8, v=10 km/s at 1.5 R*
+    mdot = mass_loss_rate(70.0, 1e8, 10.0, r_over_rstar=1.5)
+    assert 1e-9 < mdot < 1e-8  # their published range neighborhood
+
+
+def test_atmosphere_vxs_roundtrip():
+    src = DEMOS / "6" / "leid.mod"
+    if not src.exists():
+        pytest.skip("demos not present")
+    atm = Atmosphere.read(src)
+    assert atm.vxs is None
+    atm.vxs = [1.0] * atm.n
+    d = atm.to_deck()
+    assert d.get("VXS").array(atm.n)[0] == 1.0
+    # structure preserved: populations survive
+    hn = [s for s in d.statements() if s.name.upper() == "HN"]
+    assert len(hn) == 15
+
+
+def test_multi_export():
+    from pandorakit.model import to_multi_atmos
+
+    src = DEMOS / "6" / "leid.mod"
+    if not src.exists():
+        pytest.skip("demos not present")
+    atm = Atmosphere.read(src)
+    txt = to_multi_atmos(atm)
+    rows = [l for l in txt.splitlines()
+            if l.startswith("  ") and len(l.split()) == 5]
+    assert len(rows) == atm.n
+    h0 = float(rows[0].split()[0])
+    h1 = float(rows[-1].split()[0])
+    assert h0 > h1  # heights decrease downward
+
+
+# ------------------------------------------------------- flux profile parse
+def test_flux_profile_parsing():
+    aaa = Path("/Users/ibaeza/pandora/runs/outflow/ca2_static.001/ca2_static.aaa.001")
+    if not aaa.exists():
+        pytest.skip("outflow demo outputs not present")
+    from pandorakit.outputs import AaaFile
+
+    blocks = [b for b in AaaFile(aaa).profile(5, 1) if b.kind == "line_profile"]
+    assert blocks and blocks[0].is_flux
+    b = blocks[0]
+    assert b.case == "Stationary" and b.redistribution == "CRD"
+    # symmetric: intensity at +-0.5 A agree to ~1%
+    import bisect
+    pts = sorted(zip(b.wl, b.ilam))
+    def at(x):
+        return min(pts, key=lambda t: abs(t[0] - x))[1]
+    assert at(0.5) == pytest.approx(at(-0.5), rel=0.02)

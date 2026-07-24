@@ -101,6 +101,9 @@ class ProfileBlock:
     tb: list[float] = field(default_factory=list)  # K
     residual: list[float] = field(default_factory=list)
     line_center: Optional[float] = None  # A (line_profile blocks)
+    case: Optional[str] = None  # 'Stationary' / 'Moving, ...' annotation
+    redistribution: Optional[str] = None  # 'CRD' / 'PRD' when printed
+    is_flux: bool = False  # True when columns are F/A, F/Hz (flux profile)
 
 
 _KIND_PATTERNS = [
@@ -126,15 +129,31 @@ def _floats(tokens):
 
 
 def read_profile_blocks(section: Section) -> list[ProfileBlock]:
-    """Parse all intensity/flux blocks of a 'PROF (u/l)' section."""
+    """Parse all intensity/flux blocks of a 'PROF (u/l)' section.
+
+    Handles both the per-mu intensity layout (plane-parallel runs:
+    ``DL (flags) I/A I/Hz Residual II IIS TB``) and the flux layout
+    (spherical runs: ``DL SHLR F/A F/Hz Residual IF IFS TB``), mapping
+    columns by the header names PANDORA prints above each table.
+    """
     blocks: list[ProfileBlock] = []
     kind = None
     center = None
+    case = None
+    redis = None
+    colnames: list[str] = []
     cur: Optional[ProfileBlock] = None
 
-    def new_block(mu):
+    def new_block(mu, is_flux=False):
         nonlocal cur
-        cur = ProfileBlock(kind=kind or "unknown", mu=mu, line_center=center)
+        cur = ProfileBlock(
+            kind=kind or "unknown",
+            mu=mu,
+            line_center=center,
+            case=case,
+            redistribution=redis,
+            is_flux=is_flux,
+        )
         blocks.append(cur)
 
     for raw in section.text.splitlines():
@@ -142,15 +161,42 @@ def read_profile_blocks(section: Section) -> list[ProfileBlock]:
             if pat.search(raw):
                 kind = k
                 cur = None
+                colnames = []
                 m = _CENTER_RE.search(raw)
                 if m:
                     center = float(m.group(1))
                 if k.endswith("_flux"):
-                    new_block(None)  # flux blocks have no Mu header
+                    new_block(None, is_flux=True)
                 break
+        m = re.search(r"Case:\s*(\S.*?)\s{2,}", raw + "  ")
+        if m and "Case:" in raw:
+            case = m.group(1).strip()
+            continue
+        if re.search(r"Complete redistribution", raw, re.I):
+            redis = "CRD"
+            continue
+        if re.search(r"Partial [Rr]edistribution", raw):
+            redis = "PRD"
+            continue
         m = re.search(r"Mu\s*=\s*([0-9.]+)", raw)
         if m and kind:
             new_block(float(m.group(1)))
+            continue
+        # column-header line, e.g. "DL  SHLR  F/A  F/Hz  Residual  IF..."
+        # (legend lines like "DL       = Distance from ..." contain '=')
+        stripped = raw.split()
+        if (
+            stripped
+            and stripped[0] in ("DL", "WL")
+            and len(stripped) > 2
+            and "=" not in raw
+        ):
+            colnames = [
+                t for t in re.sub(r"\([^)]*\)", " ", raw).split()
+            ]
+            if kind == "line_profile" and cur is None:
+                # flux-style line profile: no Mu headers at all
+                new_block(None, is_flux=("F/A" in colnames))
             continue
         if cur is None or not re.match(r"^  *\d+ ", raw):
             continue
@@ -160,21 +206,27 @@ def read_profile_blocks(section: Section) -> list[ProfileBlock]:
         vals = _floats(row.split())
         if not vals or len(vals) < 4:
             continue
+        data = vals[1:]  # drop the index column
+
         if cur.kind == "line_profile":
-            # idx, DL, I/A, I/Hz, [Residual, [II, IIS,]] TB
-            cur.wl.append(vals[1])
-            cur.ilam.append(vals[2])
-            cur.inu.append(vals[3])
-            cur.tb.append(vals[-1])
-            if len(vals) >= 6:
-                cur.residual.append(vals[4])
+            # Layouts (trailing IF/IFS may be blank in moving cases):
+            #   flux:      DL SHLR F/A F/Hz Residual [IF IFS] TB
+            #   intensity: DL      I/A I/Hz Residual [II IIS] TB
+            off = 1 if "SHLR" in colnames else 0
+            if len(data) < 3 + off:
+                continue
+            cur.wl.append(data[0])
+            cur.ilam.append(data[1 + off])
+            cur.inu.append(data[2 + off])
+            cur.tb.append(data[-1])
+            if len(data) >= 5 + off:
+                cur.residual.append(data[3 + off])
         else:
             # idx, WL, WVL, [OM,] I(F)/Hz, I(F)/A, TB
-            tail = vals[3:]
-            cur.wl.append(vals[1])
-            cur.inu.append(tail[-3])
-            cur.ilam.append(tail[-2])
-            cur.tb.append(tail[-1])
+            cur.wl.append(data[0])
+            cur.inu.append(data[-3])
+            cur.ilam.append(data[-2])
+            cur.tb.append(data[-1])
     return [b for b in blocks if b.wl]
 
 

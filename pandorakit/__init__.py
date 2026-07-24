@@ -29,6 +29,8 @@ from .runner import (  # noqa: F401
 )
 from .outputs import AaaFile, Section, ProfileBlock  # noqa: F401
 from .pmerge import merge_pop  # noqa: F401
+from .model import to_multi_atmos  # noqa: F401
 from . import batch  # noqa: F401
+from . import recipes  # noqa: F401
 
 __version__ = "0.1.0"
