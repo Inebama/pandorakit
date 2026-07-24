@@ -313,3 +313,63 @@ def test_fit_nelder_mead_and_intervals():
     lo, hi = _interval_from_profile(xs, chis, 1.0, 0.0)
     assert lo == pytest.approx(1.0, abs=0.05)
     assert hi == pytest.approx(1.0, abs=0.05)
+
+
+# ------------------------------------------------------------ simple tables
+def test_from_table_parsing(tmp_path):
+    f = tmp_path / "star.csv"
+    f.write_text(
+        "# a comment line\n"
+        "z_km, te, nh, ne, vturb   # header with aliases\n"
+        "0.0,    5800, 1.3e16, 8.1e11, 1.5\n"
+        "-50e3,  9000, 2.0e10, 3.0e9,  2.0  # bottom-first on purpose\n"
+        "-134e3, 1.3e5, 8.7e3, 1.2e4,  2.0\n"
+    )
+    atm = Atmosphere.from_table(f)
+    assert atm.n == 3
+    # auto-flip: top (most negative z) must be first
+    assert atm.z[0] == pytest.approx(-134e3 * 1e5)  # km -> cm
+    assert atm.te[0] == pytest.approx(1.3e5)
+    assert atm.v[0] == pytest.approx(2.0)  # vturb -> PANDORA's V
+    assert atm.validate() == []
+
+    # unknown column -> clear error
+    g = tmp_path / "bad.csv"
+    g.write_text("z_km te banana\n1 2 3\n")
+    with pytest.raises(ValueError, match="banana"):
+        Atmosphere.from_table(g)
+
+
+def test_to_table_roundtrip(tmp_path):
+    src = DEMOS / "2" / "demo2.mod"
+    if not src.exists():
+        pytest.skip("demos not present")
+    atm = Atmosphere.read(src)
+    p = tmp_path / "out.csv"
+    atm.to_table(p)
+    back = Atmosphere.from_table(p)
+    assert back.n == atm.n
+    assert back.te == pytest.approx(atm.te)
+    assert back.ne == pytest.approx(atm.ne)
+
+
+def test_simple_templates_ship():
+    from pandorakit import simple
+
+    assert (simple._TEMPLATES / "h_bootstrap.dat").exists()
+    assert (simple._TEMPLATES / "h_spectrum.dat").exists()
+    # templates must be depth-count agnostic: no depth-indexed statements
+    for name in ("h_bootstrap.dat", "h_spectrum.dat"):
+        txt = (simple._TEMPLATES / name).read_text()
+        assert "TRN" not in txt and "VXS" not in txt
+
+
+def test_empty_restart_placeholder(tmp_path):
+    # a 0-byte restart crashes PANDORA's reader; the runner must write
+    # USE ( INPUT ) instead (cf. demos/2/demo2h.res)
+    import inspect
+
+    from pandorakit import runner
+
+    src = inspect.getsource(runner.PandoraRun.execute)
+    assert "USE ( INPUT )" in src

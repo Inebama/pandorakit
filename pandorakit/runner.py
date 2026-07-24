@@ -259,11 +259,12 @@ class PandoraRun:
         for unit, src in self.sources.items():
             tgt = rundir / f"fort.{unit}"
             if src is None:
-                # units 8/9 may legitimately be empty; provide empty files
-                # so a USE ( RESTART ) of an empty file behaves like the
-                # original workflow's empty .res
+                # Units 8/9 (restart / JNU) may be "empty" -- but PANDORA's
+                # reader crashes on a 0-byte file: an empty restart must
+                # contain USE ( INPUT ) so reading hands control straight
+                # back (cf. demos/2/demo2h.res).
                 if unit in (8, 9):
-                    tgt.touch()
+                    tgt.write_text("USE ( INPUT ) >\n")
                 continue
             if isinstance(src, Deck):
                 src.write(rundir / f"{self.case}.{INPUT_UNITS[unit]}")

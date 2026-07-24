@@ -30,6 +30,11 @@ writeup.
   demo-reference comparisons (demo 4's Mg II k profile reproduces the
   2014 ifort reference to every printed digit).
 
+**New here? Read [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md)
+first** — it teaches the Python tool from zero, with no PANDORA
+knowledge required (your atmosphere as a plain CSV, one function to a
+spectrum).
+
 ## Quick start
 
 ```bash

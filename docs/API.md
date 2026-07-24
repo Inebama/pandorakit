@@ -95,7 +95,7 @@ INSTALL.md layout); each path can be overridden.
 |---|---|
 | `case` | base name of the run's files (`CASE.aaa.RUNID`...) |
 | `dat` | the control deck: a path **or a `Deck` object** (written for you) |
-| `mod`, `atm`, `res`, `jnu` | path or `Deck` or None. Missing `res`/`jnu` become **empty files** (= start from scratch) |
+| `mod`, `atm`, `res`, `jnu` | path or `Deck` or None. Missing `res`/`jnu` get a `USE ( INPUT )` placeholder (= start from scratch; a 0-byte file would crash the engine's reader) |
 | `atom` | shortcut for `atm`: `("ca2", 5)` / `("h", "l15")` / `"hl3"` via the library |
 | `workdir` | runs happen in `workdir/CASE.RUNID/` (isolated; `fort.NN` symlinks managed for you) |
 
@@ -229,6 +229,25 @@ parameters.
 normalization (use the same convention as your data!).
 
 ---
+
+## Module `simple` — the beginner interface
+
+`compute_spectrum(atmosphere, lines=((3,2),), levels=3, iterations=5,
+wind=None, prd_lines=(), r1n=None, gravity_ratio=None, case=None,
+run_id="001", workdir="runs/simple", install_root=None,
+update_populations=True, timeout=3600)` → `SpectrumResult` —
+hydrogen NLTE + emergent profiles from an atmosphere table/object,
+using the validated any-N templates in `pandorakit/templates/`.
+No PANDORA knowledge needed; see docs/GETTING_STARTED.md.
+`SpectrumResult`: `.ok`, `.profile(u, l, mu=1.0)` → ProfileBlock,
+`.profiles` dict, `.atmosphere_updated` (NE/populations refined),
+`.summary()`.
+
+### `Atmosphere.from_table(path, name=None, top_first=None)` / `.to_table(path)`
+Plain-text/CSV atmospheres: '#' comments, header row naming columns
+(z_km|z_cm|zmass, te, nh, ne, optional vturb/vt/wind — full alias
+list in the docstring), any row order (auto-detected). The format is
+specified for users in GETTING_STARTED.md §3.
 
 ## Module `gui`
 `serve(root=None, port=8765, open_browser=True)` — the browser GUI

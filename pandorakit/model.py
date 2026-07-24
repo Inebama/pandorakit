@@ -187,9 +187,14 @@ class Atmosphere:
         d = Deck()
         d.items.append(Comment(f"ATMOSPHERE MODEL {self.name}"))
         d.items.append(Statement("N", [], [self.n]))
+        if self.nvh is not None:
+            # NVH is a Part-B statement (unlike R1N/CGR, which are Part D)
+            d.items.append(Statement("NVH", [], [self.nvh]))
         d.items.append(Use("INPUT"))
         d.items.append(Comment(f"{self.name} - physical state"))
         for key, attr in _SCALAR_KEYS.items():
+            if key == "NVH":
+                continue
             val = getattr(self, attr)
             if val is not None:
                 d.items.append(Statement(key, [], [val]))
@@ -293,3 +298,128 @@ def to_multi_atmos(
         for i in range(n):
             lines.append(f"  {atm.nh[i]:11.4e}")
     return "\n".join(lines) + "\n"
+
+
+# ------------------------------------------------------------- simple tables
+# Column-name aliases accepted by Atmosphere.from_table (case-insensitive).
+_TABLE_ALIASES = {
+    "z_km": ("z", 1e5),          # height in km -> cm
+    "z_cm": ("z", 1.0),
+    "z": ("z", 1.0),             # bare 'z' means cm
+    "height_km": ("z", 1e5),
+    "zmass": ("zmass", 1.0),     # column mass, g/cm^2
+    "colmass": ("zmass", 1.0),
+    "m": ("zmass", 1.0),
+    "te": ("te", 1.0),           # temperature, K
+    "t": ("te", 1.0),
+    "temp": ("te", 1.0),
+    "nh": ("nh", 1.0),           # total hydrogen density, cm^-3
+    "n_h": ("nh", 1.0),
+    "ne": ("ne", 1.0),           # electron density, cm^-3
+    "n_e": ("ne", 1.0),
+    "vturb": ("v", 1.0),         # micro-turbulence, km/s (PANDORA's V)
+    "v_turb": ("v", 1.0),
+    "vt": ("vt", 1.0),           # turbulent-pressure velocity, km/s
+    "wind": ("vxs", 1.0),        # outflow velocity, km/s (+ = outward)
+    "vxs": ("vxs", 1.0),
+    "v_wind": ("vxs", 1.0),
+}
+
+
+def _table_read(path):
+    """Parse a whitespace/comma-separated table with '#' comments.
+
+    The first non-comment line must be the header naming the columns
+    (see _TABLE_ALIASES for accepted names). Returns (colnames, rows).
+    """
+    header = None
+    rows = []
+    for raw in Path(path).read_text().splitlines():
+        line = raw.split("#")[0].strip()
+        if not line:
+            continue
+        parts = [p for p in line.replace(",", " ").split() if p]
+        if header is None:
+            header = [p.lower() for p in parts]
+            continue
+        rows.append([float(p) for p in parts])
+    if header is None or not rows:
+        raise ValueError(f"{path}: no header/data found")
+    if any(len(r) != len(header) for r in rows):
+        raise ValueError(f"{path}: rows have differing column counts")
+    return header, rows
+
+
+def atmosphere_from_table(
+    path: Union[str, Path],
+    name: Optional[str] = None,
+    top_first: Optional[bool] = None,
+) -> "Atmosphere":
+    """Build an Atmosphere from a plain text/CSV table -- no PANDORA
+    syntax involved.
+
+    Format: '#' starts a comment anywhere; the first non-comment line
+    is the header; columns may be separated by commas and/or spaces.
+    Recognized column names (case-insensitive):
+
+      z_km | z_cm | height_km   height (0 near the photosphere,
+                                NEGATIVE above it / toward the observer)
+      zmass | colmass | m       column mass [g/cm^2] (alternative to z)
+      te | t | temp             temperature [K]           (required)
+      nh | n_h                  total H density [cm^-3]   (required with z)
+      ne | n_e                  electron density [cm^-3]  (required)
+      vturb | v_turb            micro-turbulence [km/s]   (optional)
+      vt                        turbulent-pressure vel. [km/s] (optional)
+      wind | vxs | v_wind       outflow velocity [km/s, + outward]
+                                (optional; used with expanding runs)
+
+    Row order: either top-of-atmosphere first or bottom first --
+    auto-detected from the z/zmass column (top = most negative z /
+    smallest column mass); override with top_first=True/False.
+
+    Minimum for a runnable model: (z, te, nh, ne) or (zmass, te, ne).
+    Typical size: 40-100 rows, concentrated where your lines form.
+    """
+    header, rows = _table_read(path)
+    cols: dict[str, list[float]] = {}
+    for j, h in enumerate(header):
+        if h not in _TABLE_ALIASES:
+            raise ValueError(
+                f"unknown column '{h}'; accepted: "
+                + ", ".join(sorted(_TABLE_ALIASES))
+            )
+        attr, factor = _TABLE_ALIASES[h]
+        cols[attr] = [r[j] * factor for r in rows]
+
+    # order: PANDORA convention is top (index 0) -> bottom
+    key = "z" if "z" in cols else ("zmass" if "zmass" in cols else None)
+    if key is None:
+        raise ValueError("need a depth column: z_km/z_cm or zmass")
+    if top_first is None:
+        first, last = cols[key][0], cols[key][-1]
+        top_first = first < last  # top has most-negative z / least mass
+    if not top_first:
+        cols = {k: list(reversed(v)) for k, v in cols.items()}
+
+    if name is None:
+        name = Path(path).stem
+    return Atmosphere(name=name, **cols)
+
+
+def atmosphere_to_table(atm: "Atmosphere", path: Union[str, Path]) -> Path:
+    """Write an Atmosphere as the same simple table format."""
+    cols = [("z_cm", atm.z), ("zmass", atm.zmass), ("te", atm.te),
+            ("nh", atm.nh), ("ne", atm.ne), ("vturb", atm.v),
+            ("vt", atm.vt), ("wind", atm.vxs)]
+    cols = [(h, v) for h, v in cols if v is not None]
+    lines = [f"# {atm.name}: exported by pandorakit (top of atmosphere first)",
+             "  ".join(h for h, _ in cols)]
+    for i in range(atm.n):
+        lines.append("  ".join(f"{v[i]:.6e}" for _, v in cols))
+    p = Path(path)
+    p.write_text("\n".join(lines) + "\n")
+    return p
+
+
+Atmosphere.from_table = staticmethod(atmosphere_from_table)
+Atmosphere.to_table = atmosphere_to_table

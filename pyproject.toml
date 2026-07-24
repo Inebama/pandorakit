@@ -35,4 +35,4 @@ pandorakit = "pandorakit.cli:main"
 packages = ["pandorakit"]
 
 [tool.setuptools.package-data]
-pandorakit = ["data/*.json"]
+pandorakit = ["data/*.json", "templates/*.dat"]

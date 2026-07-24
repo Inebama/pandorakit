@@ -219,6 +219,11 @@ def core_shift_and_asymmetry(
     line_center -- absolute wavelength of the line (A), for km/s scaling;
     core_window -- only consider |dl| < core_window (A) for the core.
 
+    NOTE: assumes the profile has an absorption core or a central
+    self-reversal (Ca II K, photospheric H-alpha...). For pure
+    EMISSION profiles (no central dip) the "core minimum" is
+    meaningless -- measure the emission peak instead.
+
     Returns dict with:
       core_shift_kms -- velocity of the intensity minimum (negative =
                         blueshift = outflow on the near side);

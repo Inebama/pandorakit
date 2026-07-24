@@ -1,0 +1,20 @@
+[ PANDORAKIT H SPECTRUM - hydrogen run + emergent profiles, any N ]
+[ 3-level H from scratch. POPUP updates NE + H populations. ]
+[ Works with any depth count N - contains no depth-indexed statements. ]
+KK ( 9 ) >
+NVH ( 0 ) >
+USE ( MODEL ) >
+USE ( ATOM ) >
+DO ( LYMAN ) >
+DO ( PHASE2 ) >
+GO >
+USE ( MODEL ) >
+USE ( ATOM ) >
+USE ( RESTART ) >
+IOMX ( 5 ) >
+POPUP ( HYDROGEN ) >
+XK ( 1. 1.1 1.2 1.4 1.7 2.3 3. 5. 8. ) >
+GO >
+GO >
+USE ( MODEL ) >
+GO
